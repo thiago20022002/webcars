@@ -2,45 +2,37 @@ var express = require('express');
 var router = express.Router();
 var path    = require("path");
 
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  
-    res.render('index', { title: 'home' });
-        
-    //res.sendFile(path.join(__dirname+'/index.html'));
-
-   //- var db = req.db;
-   //- var collection = db.get('test');
-    //var coll2 = db.collection('test');
-  //  console.log(collection.find());
-    //console.log(coll2.find());
-   /* collection.insert({
-        "TWO" : 2
-    },function (err, doc) {
-        if (err) {
-            // If it failed, return error
-       console.log(err) }
-        else {
-            // And forward to success page
-          console.log("good");
-        }
-    });
-    */
-   //- collection.find({},{},function(e,docs){
-   //-     console.log(docs);
-   //-     res.render('test', {
-   //-         "list" : docs
-   //-    });
-   //- });
+   // var db = { title: 'home' };
+    
+      res.render('index', { title: 'home' });   
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'login' });
+   // var collection = req.db.get('test');
+  //  console.log(collection.find());
+   /// collection.find({},{},function(e,docs){
+   /// console.log(docs);
+   // res.render('index', {
+  //        "list" : docs
+  //   });
+  // });
+    
+    var db = { title: 'login', 
+        user_name : 'Talik Kasozi',
+        date : "feb 14",
+        segments : [
+            {user : talik},
+            {user : thiago},
+            {user : kasozi}
+        ]
+    };
+    res.render('login', db);
 });
 
 router.get('/search', function(req, res, next) {
+   //  var db = { title: 'search' };
     res.render('search', { title: 'search' });
 });
 

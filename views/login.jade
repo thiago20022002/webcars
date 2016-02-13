@@ -3,3 +3,8 @@ extends layout
 block container
   h1= title
     p Welcome to #{title}
+    p hello #{user_name}
+    h2 today is #{date}
+    if(logged) 
+      each stuff in segments
+       p #{stuff.user}
