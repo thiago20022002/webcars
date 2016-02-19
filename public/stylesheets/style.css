@@ -1,1 +1,74 @@
-body { padding-top: 70px; }
+body {
+    padding-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 0px;
+    }
+}
+.userName ,.price{
+    font-size: x-large;
+}
+span.price {
+    float: right;
+}
+
+.thumbnail {
+    width: 800px;
+    height: 900px;
+    overflow: auto;
+}
+
+.carousel-img {
+    min-width: 800px;
+    min-height: 700px;
+    max-width: 800px;
+    max-height: 700px;
+}
+
+.outer {
+    width: 100%;
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    /* Safari and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+}
+
+.inner {
+    width: 50%;
+}
+
+
+.user-ads {
+    width: 160px;
+    height: 160px;
+}
+
+.container-outer {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 640px;
+    height: 180px;
+}
+.container-inner {
+    width: 650px;
+}
+
+.carousel-img {
+    min-width: 270px;
+    min-height: 220px;
+    max-width: 270px;
+    max-height: 220px;
+}
