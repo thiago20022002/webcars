@@ -1,0 +1,16 @@
+{
+  "_id": 4324956743,
+  "Make": "Subaru",
+  "Model": "Impreza WRX",
+  "Year": 2005,
+  "Views": 0,
+  "Seller": "sellerName",
+  "Price": 25000,
+  "Description": "Car looks great.",
+  "Picture": [
+    "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg",
+    "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg",
+    "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg",
+    "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg"
+  ]
+}

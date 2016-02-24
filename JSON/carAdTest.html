@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--
+        Cody Mulkern                Cody_Mulkern@student.uml.edu
+        Thiago Goncalves
+
+        File: index.html
+
+    -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./carAd.json"></script>
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <title>WebCars</title>
+
+    <!--
+        Found this at: http://stackoverflow.com/questions/11124777/twitter-bootstrap-navbar-fixed-top-overlapping-site
+     -->
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding-top: 0px;
+            }
+        }
+        .userName ,.price{
+            font-size: x-large;
+        }
+        span.price {
+            float: right;
+        }
+
+        .thumbnail {
+            width: 800px;
+            min-height: 900px;
+        }
+
+        .carousel-img {
+            min-width: 800px;
+            min-height: 700px;
+            max-width: 800px;
+            max-height: 700px;
+        }
+
+        .outer {
+            width: 100%;
+
+            /* Firefox */
+            display: -moz-box;
+            -moz-box-pack: center;
+            -moz-box-align: center;
+
+            /* Safari and Chrome */
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -webkit-box-align: center;
+
+            /* W3C */
+            display: box;
+            box-pack: center;
+            box-align: center;
+        }
+
+        .inner {
+            width: 50%;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+    </style>
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery.get("../JSON/carAd.json", function (data) {
+                placeCarAd(data);
+            }, "json");
+        });
+    </script>
+
+
+</head>
+<body>
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">WebCars</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <form class="navbar-form navbar-left" role="search" action="./ad.html">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button  type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./profile.html">Bob Smith</a></li>
+                <li><a href="./">Sign out</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container outer" id="carAds">
+
+
+
+
+</div>
+
+</body>
+</html>
