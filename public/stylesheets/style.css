@@ -16,8 +16,7 @@ span.price {
 
 .thumbnail {
     width: 800px;
-    height: 900px;
-    overflow: auto;
+    min-height: 900px;
 }
 
 .carousel-img {
@@ -50,25 +49,10 @@ span.price {
     width: 50%;
 }
 
-
-.user-ads {
-    width: 160px;
-    height: 160px;
-}
-
-.container-outer {
+html, body {
+    max-width: 100%;
     overflow-x: hidden;
-    overflow-y: hidden;
-    width: 640px;
-    height: 180px;
 }
-.container-inner {
-    width: 650px;
-}
-
-.carousel-img {
-    min-width: 270px;
-    min-height: 220px;
-    max-width: 270px;
-    max-height: 220px;
+a.right.carousel-control, a.left.carousel-control{
+    height : 700px;
 }
