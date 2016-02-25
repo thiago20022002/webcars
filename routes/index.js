@@ -66,7 +66,7 @@ var single_object = {
 }
 
 
-var collection_ad  = {collections : [single_object,single_object,single_object,single_object,single_object,single_object,single_object]}
+var collection_ad  =  [single_object,single_object,single_object,single_object,single_object,single_object,single_object];
 
 
 /**
