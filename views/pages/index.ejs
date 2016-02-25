@@ -4,8 +4,7 @@
     </head>
     <body>
         <% include ../templates/nav_bar %>
-
-
+        <script src="js/customsjs/search.js"></script>
         <div class="container" id="carAds">
 
 
@@ -529,6 +528,15 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+                <script>
+
+                    collectionPaser( <%- collection %> );
+                </script>
+
             </div>
 
 

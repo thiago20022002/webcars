@@ -14,7 +14,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('pages/index', {user: req.user});
+    res.render('pages/index', {user: req.user, collection : JSON.stringify(collection_ad) });
 });
 
 
@@ -41,14 +41,14 @@ router.get('/register', function (req, res) {
 });
 router.get('/ad', function (req, res) {
 
-    res.render('pages/ad', {user: req.user, adJson: JSON.stringify(db_object)});
+    res.render('pages/ad', {user: req.user, adJson: JSON.stringify(single_object)});
 });
 
 router.get('/profile', function (req, res) {
     res.render('pages/profile', {user: req.user});
 });
 
-var db_object = {
+var single_object = {
     "_id": 4324956743,
     "Make": "Subaru",
     "Model": "Impreza WRX",
@@ -64,6 +64,10 @@ var db_object = {
         "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg"
     ]
 }
+
+
+var collection_ad  = {collections : [single_object,single_object,single_object,single_object,single_object,single_object,single_object]}
+
 
 /**
  * POST requests, url where client will be sending information to the server
