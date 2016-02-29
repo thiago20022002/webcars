@@ -50,7 +50,7 @@ router.get('/ad/:id', function (req, res) {
     });
 });
 
-router.get('/profile/:client',  function (req, res) {
+router.get('/profile/:client',  isLoggedIn, function (req, res) {
     var isHome = false;
     if (req.user) {
         if (req.params.client === req.user.username) {
