@@ -1,15 +1,27 @@
 <html lang="en">
     <head>
         <% include ../templates/header %>
+        <link rel="stylesheet" href="http://localhost:3000/stylesheets/style.css">
     </head>
     <body>
+
+
         <% include ../templates/nav_bar %>
 
-        <% for(var i = 0 ; i < clients.length ; i++ ) {%>
-        <h1>
-            <a href="/profile/<%= clients[i].username %>"> <%= clients[i].username %> </a>
-        </h1>
-        <%} %>
+        <div class='col-md-5'>
+            <ul class="list-group">
+                <% for(var i = 0 ; i < clients.length ; i++ ) {%>
+                <li class="list-group-item">
+                    <a href="/profile/<%= clients[i].username %>"> 
+                        <h3>
+                            <%= clients[i].username %>
+                        </h3>
+                    </a>
+                </li>
+                <%} %>
+
+            </ul>
+        </div>
         <% include ../templates/footer %>
     </body>
 </html>

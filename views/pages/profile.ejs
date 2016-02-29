@@ -3,6 +3,7 @@
         <% include ../templates/header %>
         <script src="../js/customsjs/profile.js">
         </script>
+        <link rel="stylesheet" href="http://localhost:3000/stylesheets/profile.css">
     </head>
 
     <body>
@@ -10,40 +11,77 @@
 
 
         <div class="container" id="userProfile">
+            <div class='container row'>
+                <div class='col-xs-6 col-md-3'>
+                    <% if (profileData.profilePictureUrl.length > 10 || profileData.profilePictureUrl !== undefined) {%>
+                    <a href='#' class='thumbnail'>
+                        <img src='<%= profileData.profilePictureUrl %>' alt='...'>
+                    </a>
+                    <% } %>
+                </div> 
+                <div>
+                    <h1> <%=profileData.firstName%>  <%=profileData.lastName%> </h1>
+                    <h5> <%=profileData.address%> </h5>
+                    <h5> <%=profileData.phone%> </h5>
 
-        </div>
+                </div>
+            </div>
+            <div class='innerDiv'>
+                <div class='container-outer'>
+                    <h4>Ads by <a href='http://localhost:3000/profile/<%=profileData.username%>'> <%=profileData.firstName%>  <%=profileData.lastName%> </a> ( <%=profileData.postedAds.length%> )</h4>
+                    <div class='row moreAdsDiv container-inner'>
 
-        <% if(!home) {%>
-        <form class="form-horizontal" action="/profile/<%=client%>/addFeedback" method="POST">
-            <fieldset>
+                        <% for (var moreAds = 0; moreAds < profileData.postedAds.length; moreAds++) { %>
+                        <div class='col-xs-6 col-md-3 user-ads'>
 
-                <!-- Form Name -->
-                <legend>Feedback</legend>
-                <!-- Textarea -->
-                <script>
-
-                </script>
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="textarea">Text Area</label>
-                    <div class="col-md-4">                     
-                        <textarea class="form-control" id="textarea" name="feedback">default text</textarea>
+                            <a href='http://localhost:3000/ad/<%=profileData.postedAds[moreAds]._id%>' class='thumbnail'>
+                                <img src='<%=profileData.postedAds[moreAds].picture[0]%>' alt='...'>
+                            </a>
+                        </div>
+                        <% }%>
                     </div>
                 </div>
-
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="submit"></label>
-                    <div class="col-md-4">
-                        <button type="submit" id="submit" name="submit" class="btn btn-primary">submit</button>
+                <% if (profileData.feedbacks.length !== 0) { %>
+                <h4>Feedbacks</h4>
+                <div class='feedBackPanels'>
+                    <% for (var feedBack = 0; feedBack < profileData.feedbacks.length; feedBack++) { %>
+                    <div class='panel panel-default'>
+                        <div class='panel-heading'> <%=profileData.feedbacks[feedBack].username %></div>
+                        <div class='panel-body'>
+                            <p><%=profileData.feedbacks[feedBack].comment%></p>
+                        </div>
                     </div>
+                    <% } %>
                 </div>
+                <% } %>
+                <% if(!home) {%>
+                <form class="form-horizontal" action="/profile/<%=client%>/addFeedback" method="POST">
+                    <fieldset>
 
-            </fieldset>
-        </form>
-        <% } %>
-        <script>
-            placeProfileContent( <%- profileData %> )
-        </script>
-        <% include ../templates/footer %>
+                        <!-- Form Name -->
+                        <legend>Post Feedback</legend>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="textarea">Feedback</label>
+                            <div class="col-md-10">                     
+                                <textarea class="form-control" id="textarea" name="feedback"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-4">
+                                <button type="submit" id="submit" name="submit" class="btn btn-primary">submit</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+                <% } %>
+            </div>
+
+
+            <% include ../templates/footer %>
     </body>
 </html>

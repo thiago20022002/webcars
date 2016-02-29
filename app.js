@@ -67,7 +67,7 @@ if (app.get('env') === 'development') {
             error: err,
             user : req.user 
         });
-    //    console.log(err);
+        console.log(err);
     });
 }
 

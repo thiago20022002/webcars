@@ -78,7 +78,7 @@ function placeCarAd(jsonFile) {
      * This is where the Seller's name, Views and description of the car will be.
      * */
     adContent += "<div class='caption'>";
-    adContent += "<p><span class='userName'>" + jsonFile.seller + "</span><span class='price'>Views: " + jsonFile.views + "</span></p>";
+    adContent += "<a href=../profile/"+jsonFile.seller+"><p><span class='userName'>" + jsonFile.seller + "</span><span class='price'>Views: " + jsonFile.views + "</span></p></a>";
     adContent += "<div class='container'>";
     adContent += "<p>"+jsonFile.description+"</p>";
     adContent += "<ul>";

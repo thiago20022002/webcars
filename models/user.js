@@ -26,7 +26,7 @@ var adSchema = new mongoose.Schema({
 var userSchema = new mongoose.Schema({
     username: String,
     password: String,
-    fistName: String,
+    firstName: String,
     lastName: String,
     address: String,
     profilePictureUrl: String,

@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
 
 /* GET login page. */
 router.get('/login', function (req, res) {
-    res.render('pages/login', {user: req.user});
+    res.render('pages/login', {user: req.user, errorMessage: req.flash('loginMessage')});
 });
 /*Redirect user to root page after logout. */
 router.get('/logout', function (req, res) {
@@ -41,7 +41,8 @@ router.get('/home', isLoggedIn, function (req, res) {
 
 });
 router.get('/register', function (req, res) {
-    res.render('pages/register', {user: req.user, message: req.flash('loginMessage')});
+    //console.log(req.flash('registerMessage'));
+    res.render('pages/register', {user: req.user, errorMessage: req.flash('registerMessage')});
 });
 router.get('/ad/:id', function (req, res) {
     Ads.findOne({'_id': req.params.id}, function (err, ad) {
@@ -49,7 +50,7 @@ router.get('/ad/:id', function (req, res) {
     });
 });
 
-router.get('/profile/:client', isLoggedIn, function (req, res) {
+router.get('/profile/:client',  function (req, res) {
     var isHome = false;
     if (req.user) {
         if (req.params.client === req.user.username) {
@@ -62,7 +63,7 @@ router.get('/profile/:client', isLoggedIn, function (req, res) {
 
     Users.findOne({username: req.params.client}, function (err, client) {
         if (client.username) {
-            res.render('pages/profile', {user: req.user, home: isHome, client: req.params.client, profileData: JSON.stringify(client)});
+            res.render('pages/profile', {user: req.user, home: isHome, client: req.params.client, profileData: client});
         } else {
             res.redirect('/register'); //user does exist redirect somewhere else
         }
@@ -128,7 +129,7 @@ router.post('/profile/:client/postAd', isLoggedIn, function (req, res) {
 router.post('/profile/:client/addFeedback', isLoggedIn, function (req, res) {
 
     var fed = new Feedback();
-    fed.username = req.params.client;
+    fed.username = req.user.username;
     fed.comment = req.body.feedback;
 
     Users.update(

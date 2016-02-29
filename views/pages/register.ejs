@@ -1,6 +1,7 @@
 <html lang="en">
     <head>
         <% include ../templates/header %>
+        <link rel="stylesheet" href="http://localhost:3000/stylesheets/style.css">
     </head>
     <body>
         <% include ../templates/nav_bar %>
@@ -12,6 +13,7 @@
                     <!-- Form Name -->
                     <legend>Register</legend>
 
+                    <% include ../templates/errorMessage %>
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="username">Email</label>  
