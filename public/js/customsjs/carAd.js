@@ -18,7 +18,7 @@ function placeCarAd(jsonFile) {
     /*
      * Holds the Car Make, Model and Price
      * */
-    adContent += "<h3>" + jsonFile.Make + " " + jsonFile.Model +  "<span class='price'>$" + jsonFile.Price + "</span></h3>";
+    adContent += "<h3>" + jsonFile.make + " " + jsonFile.model +  "<span class='price'>$" + jsonFile.price + "</span></h3>";
 
     /*
      * Starts the Bootstrap Carousel to be able to click through multiple images.
@@ -32,7 +32,7 @@ function placeCarAd(jsonFile) {
      * This loop will go through all the images adding the appropriate amount of data targets for the amount of images
      * uploaded for the car.
      * */
-    for( var carouselLen = 1; carouselLen < jsonFile.Picture.length; carouselLen++ ){
+    for( var carouselLen = 1; carouselLen < jsonFile.picture.length; carouselLen++ ){
         console.log("Inside Carousel Length: " + carouselLen);
         adContent += "<li data-target='#myCarousel' data-slide-to='" + carouselLen + "'></li>";
     }
@@ -45,7 +45,7 @@ function placeCarAd(jsonFile) {
      * The first image must be active so only when the loop is 0 it will output a different line.
      * */
     adContent += "<div class='carousel-inner' role='listbox'>";
-    for( var carouselImages = 0; carouselImages < jsonFile.Picture.length; carouselImages++ ){
+    for( var carouselImages = 0; carouselImages < jsonFile.picture.length; carouselImages++ ){
         console.log("Inside Carousel Images: " + carouselImages);
         if( carouselImages == 0){
             adContent += "<div class='item active'>";
@@ -53,7 +53,7 @@ function placeCarAd(jsonFile) {
         else{
             adContent += "<div class='item'>";
         }
-        adContent += "<img class='carousel-img' src='" + jsonFile.Picture[carouselImages] + "' alt='Chania' width='460' height='345'>";
+        adContent += "<img class='carousel-img' src='" + jsonFile.picture[carouselImages] + "' alt='Chania' width='460' height='345'>";
         adContent += "</div>";
     }
     adContent += "</div>";
@@ -78,15 +78,14 @@ function placeCarAd(jsonFile) {
      * This is where the Seller's name, Views and description of the car will be.
      * */
     adContent += "<div class='caption'>";
-    adContent += "<p><span class='userName'>" + jsonFile.Seller + "</span><span class='price'>Views: " + jsonFile.Views + "</span></p>";
+    adContent += "<p><span class='userName'>" + jsonFile.seller + "</span><span class='price'>Views: " + jsonFile.views + "</span></p>";
     adContent += "<div class='container'>";
-    adContent += "<p>This 2005 Sti has 50,000 miles on it all highway. Practically brand new. Must make serious offer to take it for a test drive.</p>";
+    adContent += "<p>"+jsonFile.description+"</p>";
     adContent += "<ul>";
-    adContent += "<li>Year: " + jsonFile.Year + "</li>";
-    adContent += "<li>Make: " + jsonFile.Make + "</li>";
-    adContent += "<li>Model: " + jsonFile.Model + "</li>";
+    adContent += "<li>Year: " + jsonFile.year + "</li>";
+    adContent += "<li>Make: " + jsonFile.make + "</li>";
+    adContent += "<li>Model: " + jsonFile.model + "</li>";
     adContent += "</ul>";
-
 
     /*
      * These just close off all of the divs used to make the page.

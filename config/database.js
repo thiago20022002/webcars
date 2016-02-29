@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function () {
 
-    console.log("js loaded from the template");
-
-
-})
-
+// config/database.js
+module.exports = {
+    'url' : 'mongodb://localhost/document'
+};

@@ -1,0 +1,15 @@
+<html lang="en">
+    <head>
+        <% include ../templates/header %>
+    </head>
+    <body>
+        <% include ../templates/nav_bar %>
+
+        <% for(var i = 0 ; i < clients.length ; i++ ) {%>
+        <h1>
+            <a href="/profile/<%= clients[i].username %>"> <%= clients[i].username %> </a>
+        </h1>
+        <%} %>
+        <% include ../templates/footer %>
+    </body>
+</html>

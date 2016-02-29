@@ -1,12 +1,12 @@
 var express = require('express');
-
 var passport = require('passport');
-var Account = require('../models/account');
 var router = express.Router();
 var path = require("path");
-
+var mongoose = require('mongoose');
+var Ads = mongoose.model('Ads');
+var Users = mongoose.model('Users');
+var Feedback = mongoose.model('feedback');
 var router = express.Router();
-
 /**
  * GET requests, url available to let the user navagate.
  */
@@ -14,15 +14,18 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('pages/index', {user: req.user, collection : JSON.stringify(collection_ad) });
-});
 
+    Ads.find({}, function (err, ads) {
+        if (err)
+            throw err;
+        res.render('pages/index', {user: req.user, collection: JSON.stringify(ads)});
+    });
+});
 
 /* GET login page. */
 router.get('/login', function (req, res) {
     res.render('pages/login', {user: req.user});
 });
-
 /*Redirect user to root page after logout. */
 router.get('/logout', function (req, res) {
     req.logout();
@@ -31,63 +34,126 @@ router.get('/logout', function (req, res) {
 
 
 /* GET login page. */
-router.get('/home', function (req, res, next) {
+router.get('/home', isLoggedIn, function (req, res) {
     //isauthorized = true;
-    res.render('pages/index', {user: req.user});
-});
+   // res.render('pages/profile', {user: req.user, home: true});
+   res.redirect('/profile/'+req.user.username);
 
+});
 router.get('/register', function (req, res) {
-    res.render('pages/register', {user: req.user});
+    res.render('pages/register', {user: req.user, message: req.flash('loginMessage')});
 });
-router.get('/ad', function (req, res) {
-
-    res.render('pages/ad', {user: req.user, adJson: JSON.stringify(single_object)});
-});
-
-router.get('/profile', function (req, res) {
-    res.render('pages/profile', {user: req.user});
+router.get('/ad/:id', function (req, res) {
+    Ads.findOne({'_id': req.params.id}, function (err, ad) {
+        res.render('pages/ad', {user: req.user, adJson: JSON.stringify(ad)});
+    });
 });
 
-var single_object = {
-    "_id": 4324956743,
-    "Make": "Subaru",
-    "Model": "Impreza WRX",
-    "Year": 2005,
-    "Views": 0,
-    "Seller": "sellerName",
-    "Price": 25000,
-    "Description": "Car looks great.",
-    "Picture": [
-        "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg",
-        "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg",
-        "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg",
-        "http://www.theautochannel.com/news/2005/06/23/134049.1-lg.jpg"
-    ]
-}
+router.get('/profile/:client', isLoggedIn, function (req, res) {
+    var isHome = false;
+    if (req.user) {
+        if (req.params.client === req.user.username) {
+            //    res.redirect("/home");
+            //    return;
+            isHome = true;
 
+        }
+    }
 
-var collection_ad  =  [single_object,single_object,single_object,single_object,single_object,single_object,single_object];
+    Users.findOne({username: req.params.client}, function (err, client) {
+        if (client.username) {
+            res.render('pages/profile', {user: req.user, home: isHome, client: req.params.client, profileData: JSON.stringify(client)});
+        } else {
+            res.redirect('/register'); //user does exist redirect somewhere else
+        }
+    });
 
+});
+
+router.get('/viewUsers', isLoggedIn, function (req, res) {
+    Users.find({}, function (err, client) {
+
+        res.render('pages/viewUsers', {user: req.user, clients: client});
+    });
+});
+
+router.get('/profile/:client/postAd', isLoggedIn, function (req, res) {
+
+    res.render('pages/postForm', {user: req.user});
+
+});
 
 /**
  * POST requests, url where client will be sending information to the server
  */
 
-router.post('/login', passport.authenticate('local'), function (req, res) {
-    res.redirect('/home'); //goto home-page when logged in
-});
+router.post('/login', passport.authenticate('login', {
+    successRedirect: '/home', // redirect to the secure profile section
+    failureRedirect: '/', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
+}));
+router.post('/register', passport.authenticate('signup', {
+    successRedirect: '/home', // redirect to the secure profile section
+    failureRedirect: '/register', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
+}));
+router.post('/profile/:client/postAd', isLoggedIn, function (req, res) {
+   // console.log(req.user.username);
+  // if(req.user.username !== req.params.client){
+       
+  // }
+   
+    var ad = new Ads({});
+    ad.store(req);
+    ad.save();
+    Users.update(
+            {
+                username: req.user.username
+            },
+    {
+        $push: {"postedAds": ad}
+    },
+    {
+        new : true
+    },
+    function (err, user) {
+        if (err)
+            throw err;
+        res.redirect("/profile/" + req.user.username);
 
-router.post('/register', function (req, res) {
-    Account.register(new Account({user: req.user, username: req.body.username}), req.body.password, function (err, account) {
-        if (err) {
-        }
-
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/home');
-        });
     });
+
+});
+
+router.post('/profile/:client/addFeedback', isLoggedIn, function (req, res) {
+
+    var fed = new Feedback();
+    fed.username = req.params.client;
+    fed.comment = req.body.feedback;
+
+    Users.update(
+            {
+                username: req.params.client
+            },
+    {
+        $push: {"feedbacks": fed}
+    },
+    {
+        new : true
+    },
+    function (err, user) {
+        if (err)
+            throw err;
+
+    });
+    res.redirect("/profile/" + req.params.client);
 });
 
 
-//wsc.connect('ws://localhost:8080/MavenTrends/websocket');
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect('/');
+}
+
 module.exports = router;

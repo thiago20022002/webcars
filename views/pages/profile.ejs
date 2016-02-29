@@ -1,84 +1,49 @@
-<html lang="en">
+<html>
     <head>
         <% include ../templates/header %>
+        <script src="../js/customsjs/profile.js">
+        </script>
     </head>
+
     <body>
         <% include ../templates/nav_bar %>
 
-        <div class="container" id="carAds">
 
-
-            <div class="container row">
-                <div class="col-xs-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="http://www.moibbk.com/images/acura-rsx-8.jpg" alt="...">
-                    </a>
-                </div>
-                <div><h1>Bob Smith</h1>
-                    <h5>123 Car Rd Lowell, MA</h5>
-                    <h5>Home Phone: 123-456-7890</h5>
-                    <h5>Cell Phone: 890-567-1234</h5>
-                </div>
-            </div>
-
-            <div class="innerDiv ">
-                <div class="container-outer">
-                    <a><h4>More ads by Bob Smith (4)</h4></a>
-                    <div class="row moreAdsDiv container-inner">
-                        <div class="col-xs-6 col-md-3 user-ads">
-                            <a href="#" class="thumbnail">
-                                <img src="http://www.moibbk.com/images/acura-rsx-8.jpg" alt="...">
-                            </a>
-                        </div>
-                        <div class="col-xs-6 col-md-3 user-ads">
-                            <a href="#" class="thumbnail">
-                                <img src="http://www.moibbk.com/images/acura-rsx-8.jpg" alt="...">
-                            </a>
-                        </div>
-                        <div class="col-xs-6 col-md-3 user-ads">
-                            <a href="#" class="thumbnail">
-                                <img src="http://www.moibbk.com/images/acura-rsx-8.jpg" alt="...">
-                            </a>
-                        </div>
-                        <div class="col-xs-6 col-md-3 user-ads">
-                            <a href="#" class="thumbnail">
-                                <img src="http://www.moibbk.com/images/acura-rsx-8.jpg" alt="...">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <h4>Feedback:</h4>
-                <div class="container-inner">
-                    <textarea rows="4" cols="80"></textarea>
-                </div>
-
-                <div class="feedBackPanels">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Taylor Waussom</div>
-                        <div class="panel-body">
-                            Car exploded on the way home.
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Zachy McDougal</div>
-                        <div class="panel-body">
-                            Wheel fell off, oh well better than my last car.
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Dylan Rgoers</div>
-                        <div class="panel-body">
-                            Its a Pontiac what else do I need to say.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
+        <div class="container" id="userProfile">
 
         </div>
 
+        <% if(!home) {%>
+        <form class="form-horizontal" action="/profile/<%=client%>/addFeedback" method="POST">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Feedback</legend>
+                <!-- Textarea -->
+                <script>
+
+                </script>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="textarea">Text Area</label>
+                    <div class="col-md-4">                     
+                        <textarea class="form-control" id="textarea" name="feedback">default text</textarea>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit"></label>
+                    <div class="col-md-4">
+                        <button type="submit" id="submit" name="submit" class="btn btn-primary">submit</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+        <% } %>
+        <script>
+            placeProfileContent( <%- profileData %> )
+        </script>
+        <% include ../templates/footer %>
     </body>
 </html>
