@@ -36,8 +36,8 @@ router.get('/logout', function (req, res) {
 /* GET login page. */
 router.get('/home', isLoggedIn, function (req, res) {
     //isauthorized = true;
-   // res.render('pages/profile', {user: req.user, home: true});
-   res.redirect('/profile/'+req.user.username);
+    // res.render('pages/profile', {user: req.user, home: true});
+    res.redirect('/profile/' + req.user.username);
 
 });
 router.get('/register', function (req, res) {
@@ -50,7 +50,7 @@ router.get('/ad/:id', function (req, res) {
     });
 });
 
-router.get('/profile/:client',  isLoggedIn, function (req, res) {
+router.get('/profile/:client', isLoggedIn, function (req, res) {
     var isHome = false;
     if (req.user) {
         if (req.params.client === req.user.username) {
@@ -62,8 +62,12 @@ router.get('/profile/:client',  isLoggedIn, function (req, res) {
     }
 
     Users.findOne({username: req.params.client}, function (err, client) {
-        if (client.username) {
-            res.render('pages/profile', {user: req.user, home: isHome, client: req.params.client, profileData: client});
+        if (client) {
+            if (client.username) {
+                res.render('pages/profile', {user: req.user, home: isHome, client: req.params.client, profileData: client});
+            } else {
+                res.redirect('/register'); //user does exist redirect somewhere else
+            }
         } else {
             res.redirect('/register'); //user does exist redirect somewhere else
         }
@@ -99,11 +103,11 @@ router.post('/register', passport.authenticate('signup', {
     failureFlash: true // allow flash messages
 }));
 router.post('/profile/:client/postAd', isLoggedIn, function (req, res) {
-   // console.log(req.user.username);
-  // if(req.user.username !== req.params.client){
-       
-  // }
-   
+    // console.log(req.user.username);
+    // if(req.user.username !== req.params.client){
+
+    // }
+
     var ad = new Ads({});
     ad.store(req);
     ad.save();
