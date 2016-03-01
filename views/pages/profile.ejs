@@ -1,9 +1,9 @@
 <html>
     <head>
         <% include ../templates/header %>
-        <script src="../js/customsjs/profile.js">
+        <script src="/js/customsjs/profile.js">
         </script>
-        <link rel="stylesheet" href="http://localhost:3000/stylesheets/profile.css">
+        <link rel="stylesheet" href="/stylesheets/profile.css">
     </head>
 
     <body>
@@ -28,13 +28,13 @@
             </div>
             <div class='innerDiv'>
                 <div class='container-outer'>
-                    <h4>Ads by <a href='http://localhost:3000/profile/<%=profileData.username%>'> <%=profileData.firstName%>  <%=profileData.lastName%> </a> ( <%=profileData.postedAds.length%> )</h4>
+                    <h4>Ads by <a href='/profile/<%=profileData.username%>'> <%=profileData.firstName%>  <%=profileData.lastName%> </a> ( <%=profileData.postedAds.length%> )</h4>
                     <div class='row moreAdsDiv container-inner'>
 
                         <% for (var moreAds = 0; moreAds < profileData.postedAds.length; moreAds++) { %>
                         <div class='col-xs-6 col-md-3 user-ads'>
 
-                            <a href='http://localhost:3000/ad/<%=profileData.postedAds[moreAds]._id%>' class='thumbnail'>
+                            <a href='/ad/<%=profileData.postedAds[moreAds]._id%>' class='thumbnail'>
                                 <img src='<%=profileData.postedAds[moreAds].picture[0]%>' alt='...'>
                             </a>
                         </div>
