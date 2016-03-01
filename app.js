@@ -49,7 +49,7 @@ var url_str = process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL || configDB.url;
 // mongoose
 
-var url = "mongodb://test:test@ds019678.mlab.com:19678/heroku_b2dmx8l5";
+var url = "mongodb://test:test@ds019678.mlab.com:19678/document";
 
 console.log(url_str);
 //var url_str = "mongodb://test:test@ds019678.mlab.com:19678/heroku_b2dmx8l5";
