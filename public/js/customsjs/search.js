@@ -17,7 +17,7 @@ function collectionPaser(collection) {
 
         searchContent += "<div class='col-sm-6 col-md-4'>";
         searchContent += "<div class='thumbnail'>";
-        searchContent += "<h3><a href='http://localhost:3000/ad/"+collection[searchAds]._id+"'>" + collection[searchAds].make + " " + collection[searchAds].model + "</a><span class='price'>$" + collection[searchAds].price + "</span></h3>";
+        searchContent += "<h3><a href='http://localhost:3000/ad/" + collection[searchAds]._id + "'>" + collection[searchAds].make + " " + collection[searchAds].model + "</a><span class='price'>$" + collection[searchAds].price + "</span></h3>";
         searchContent += "<div id='myCarousel" + searchAds + "' class='carousel slide' data-ride='carousel'>";
 
 
@@ -63,6 +63,8 @@ function collectionPaser(collection) {
         /*
          * Closes Thumbnail
          * */
+        searchContent += "</div>";
+
         searchContent += "</div>";
 
         /*

@@ -3,9 +3,9 @@ var passport = require('passport');
 var router = express.Router();
 var path = require("path");
 var mongoose = require('mongoose');
-var Ads = mongoose.model('Ads');
-var Users = mongoose.model('Users');
-var Feedback = mongoose.model('feedback');
+var Ads = mongoose.model('Ads_col');
+var Users = mongoose.model('Users_col');
+var Feedback = mongoose.model('feedback_col');
 var router = express.Router();
 /**
  * GET requests, url available to let the user navagate.

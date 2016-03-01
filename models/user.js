@@ -53,15 +53,15 @@ userSchema.methods.addFeedback = function(user, feedbck){
    this.feedback.push(fed);
 };
 
-mongoose.model('User', userSchema);
-mongoose.model('Ads', adSchema);
-mongoose.model('feedback', feedbackSchema);
+mongoose.model('Users_col', userSchema);
+mongoose.model('Ads_col', adSchema);
+mongoose.model('feedback_col', feedbackSchema);
 
 //module.exports =  mongoose.model('Ads', adSchema);
 //module.exports =  mongoose.model('User', userSchema);
 
 module.exports = {
-    User : mongoose.model('Users', userSchema),
-    Ad : mongoose.model('Ads', adSchema)
+    User : mongoose.model('Users_col', userSchema),
+    Ad : mongoose.model('Ads_col', adSchema)
 };
 
