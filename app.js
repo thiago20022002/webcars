@@ -44,8 +44,11 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 app.use('/', routes);
 
+
+var url_str = process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL || configDB.url;
 // mongoose
-mongoose.connect(configDB.url);
+mongoose.connect(url_str);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

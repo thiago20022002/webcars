@@ -154,7 +154,7 @@ router.post('/profile/:client/addFeedback', isLoggedIn, function (req, res) {
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
-    res.redirect('/');
+    res.redirect('/register');
 }
 
 module.exports = router;
