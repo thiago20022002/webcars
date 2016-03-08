@@ -1,0 +1,54 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">WebCars</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div ng-if="userExist == true">  
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Navagation<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/profile/{{user.username}}/postAd">Post Ads</a></li>
+                            <li><a href="/viewUsers">View Users profile</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <form role="search" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <div ng-if="userExist == false"> 
+                <ul class="nav navbar-nav navbar-right">
+                    <li>    
+                        <a href="/login">Login</a> 
+                    </li>             
+                    <li> 
+                        <a href="/register">Register</a> 
+                    </li>
+                </ul>
+            </div>
+            <div ng-if="userExist == true"> 
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                    <li> 
+                        <a href="#"> {{username}}</a> 
+                    </li>
+                    <li ng-controller='logoutCtrl'> 
+                        <a href="#" ng-click="sendLogOutGet()"> Logout </a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.nav-collapse--></div>
+</nav>

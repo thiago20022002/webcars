@@ -1,0 +1,28 @@
+<div id="userProfile" class="ng-scope">
+    <div class="container row">
+        <div class="col-xs-6 col-md-5">
+            <a href="#" class="thumbnail">
+                <img src="{{profileURL}}" alt="...">
+            </a>
+        </div>
+        <div class="col-md-6">
+                <h1>{{firstName}}</h1>
+                <h5>{{lastName}}</h5>
+                <h5>{{phone}}</h5>
+                <h5>{{location}}</h5>
+            </div>
+    </div>
+    <div class="innerDiv">
+        <div class="container-outer">
+            <h4>Ads by 
+                <a href="http://localhost:3000/profile/"+{{username}}>{{firstName}} {{lastName}}</a> (1)
+            </h4>
+            <div class="row moreAdsDiv container-inner">
+                <div class="col-xs-6 col-md-3 user-ads">
+                    <a href="http://localhost:3000/ad/56dde564400085980a3624d3" class="thumbnail">
+                        <img src="http://indiabright.com/wp-content/uploads/2015/12/c2.jpg" alt="..."></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

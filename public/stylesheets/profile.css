@@ -8,28 +8,27 @@ and open the template in the editor.
     Author     : Dr Goncalves
 */
 
- body { padding-top: 70px; }
-        @media screen and (max-width: 768px) {
-            body { padding-top: 0px; }
-        }
-        span.price {
-            float:right;
-        }
-        .user-ads {
-            width: 160px;
-            height: 160px;
-        }
-        .innerDiv {
-            width: 50%;
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}
+span.price {
+    float:right;
+}
+.user-ads {
+    width: 160px;
+    height: 160px;
+}
+.innerDiv {
+    width: 50%;
 
-            margin: 0 auto;
-        }
-        .container-outer {
-            overflow-x: hidden;
-            overflow-y: hidden;
-            width: 640px;
-            height: 180px;
-        }
-        .container-inner {
-            width: 650px;
-        }
+    margin: 0 auto;
+}
+.container-outer {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 640px;
+    height: 180px;
+}
+.container-inner {
+    width: 650px;
+}

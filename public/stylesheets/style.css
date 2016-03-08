@@ -1,6 +1,3 @@
-body {
-    padding-top: 70px;
-}
 
 @media screen and (max-width: 768px) {
     body {
@@ -56,3 +53,4 @@ html, body {
 a.right.carousel-control, a.left.carousel-control{
     height : 700px;
 }
+

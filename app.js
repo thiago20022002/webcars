@@ -13,7 +13,7 @@ require('./config/passport')(passport); // pass passport for configuration
 var flash    = require('connect-flash');
 var configDB = require('./config/database.js');
 
-var routes = require('./routes/index');
+var routes = require('./routes/api');
 
 
 var app = express();
@@ -54,7 +54,7 @@ var url = "mongodb://test:test@ds019678.mlab.com:19678/heroku_b2dmx8l5";
 console.log(url_str);
 //var url_str = "mongodb://test:test@ds019678.mlab.com:19678/heroku_b2dmx8l5";
 
-mongoose.connect(url);
+mongoose.connect(url_str);
 console.log("passsed******************");
 
 // catch 404 and forward to error handler

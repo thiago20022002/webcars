@@ -1,0 +1,95 @@
+
+<div class="col-md-4"></div> 
+
+<div ng-controller="registerCtrl" class="col-md-4">
+
+    <form ng-submit="sendRegisterPost()">
+        <fieldset>
+            <!-- Form Name -->
+            <legend>Create account with us. </legend>
+            <div class="form-group" ng-if="error == true">
+                <div class="alert alert-danger"><strong>Error </strong>{{errorMessage}}</div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="info-tab">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <h4>Account Information</h4>  
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group  input-group input-group-md">
+                            <span class="input-group-addon" > <i class="fa fa-user"></i></span>
+                            <input class="form-control input-md" ng-model="registerData.username" type="text" placeholder="email">
+                        </div>
+
+                        <!-- Password input-->
+                        <div class="form-group input-group input-group-md">
+                            <input class="form-control input-md" ng-model="registerData.password" type="password" placeholder="password" >
+                            <span class="input-group-addon" ><i class="fa fa-key"></i> </span>
+                        </div>
+
+                        <div class="form-group input-group input-group-md">
+                            <input class="form-control input-md" ng-model="registerData.confirm" type="password" placeholder="confirm password">
+                            <span class="input-group-addon" ><i class="fa fa-check"></i> </span>
+                        </div>
+                        <span class="pull-right">
+                            <a href="#address-tab" data-toggle="tab">
+                                <i class="fa fa-arrow-right fa-3x"></i>
+                            </a>
+                        </span>    
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="address-tab">
+                    <div class="col-md-12">
+                        <a href="#info-tab" data-toggle="tab">
+                            <i class="fa fa-arrow-left fa-3x"></i>
+                        </a>
+                        <div class="form-group">
+                            <h4>Personal Information</h4>  
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+
+                            <input class="form-control input-md" ng-model="registerData.fname" type="text" placeholder="First Name">
+                            <!-- Text input-->
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control input-md" ng-model="registerData.lname" type="text" placeholder="Last Name" >
+                        </div>
+
+
+                        <hr>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <input class="form-control input-md" ng-model="registerData.phone" type="text" placeholder="(xxx)(---)(xxxx)" >
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <input class="form-control input-md" ng-model="registerData.address" type="text" placeholder="location">
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+
+                            <input class="form-control input-md" ng-model="registerData.profileURL" type="text" placeholder="path to image" >
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary form-control btn-md">Submit</button>
+                        </div>
+                        <div class="form-group">
+                            <a href="/">
+                                <button type="button" class="btn btn-danger form-control btn-md">Cancel</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

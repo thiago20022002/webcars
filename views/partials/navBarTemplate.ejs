@@ -1,0 +1,91 @@
+<div class="navbar navbar-inverse navbar-twitch" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <span class="small-nav"> <span class="logo"> <B> </span> </span>
+                <span class="full-nav"> < Bootsnipp > </span>
+            </a>
+        </div>
+        <div class="">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="/">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Ads"> 
+                            <span class="fa fa-home"></span> 
+                        </span>
+                        <span class="full-nav"> Ads </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/search">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Search"> 
+                            <span class="fa fa-search"></span> 
+                        </span>
+                        <span class="full-nav">Search </span>
+                    </a>
+                </li>
+
+                <li ng-if="userExist == false">
+                    <a href="/login">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Login"> 
+                            <span class="fa fa-sign-in"></span> 
+                        </span>
+                        <span class="full-nav"> Sign In </span>
+                    </a>
+                </li>
+                <li ng-if="userExist == true" ng-controller='logoutCtrl'>
+                    <a href="#" ng-click="sendLogOutGet()">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Logout"> 
+                            <span class="fa fa-sign-out"></span> 
+
+                        </span>
+                        <span class="full-nav">Sign Out</span>
+                    </a>
+                </li>
+                <li ng-if="userExist == true">
+                    <a href="/profile/{{username}}">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Profile"> 
+                            <span class="fa fa-user"></span> 
+                        </span>
+                        <span class="full-nav">Profile</span>
+                    </a>
+                </li>
+
+
+                <li ng-if="userExist == true">
+                    <a href="/profile/{{username}}/post">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Post"> 
+                            <span class="fa fa-sticky-note"></span> 
+                        </span>
+                        <span class="full-nav">Post </span>
+                    </a>
+                </li>
+                <li ng-if="userExist == false">
+                    <a href="/register">
+                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Register"> 
+                            <span class="fa fa-user-plus"></span> 
+                        </span>
+                        <span class="full-nav">Register </span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="col-md-12">
+    <div class="col-md-1">
+        <button type="button" class="btn btn-default btn-xs navbar-twitch-toggle">
+            <span class="glyphicon glyphicon-chevron-right nav-open"></span>		
+            <span class="glyphicon glyphicon-chevron-left nav-close"></span>
+        </button>
+    </div>
+    <div class="col-md-11">
+        <div ng-if="userExist == true">
+            <h4>Wecome {{username}}.</h4>
+        </div>
+    </div>
+</div>

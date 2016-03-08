@@ -1,6 +1,8 @@
 
 
 
+/* global module */
+
 var LocalStrategy = require('passport-local').Strategy;
 require('../models/user')
 var mongoose = require('mongoose');
@@ -41,13 +43,13 @@ module.exports = function (passport) {
             if (!user) {
                 console.log('User Not Found with username ' + username);
                 return done(null, false,
-                        req.flash('loginMessage', 'User Not found.'));
+                        req.flash('message', 'User Not found.'));
             }
             // User exists but wrong password, log the error 
             if (!isValidPassword(user, password)) {
                 console.log('Invalid Password');
                 return done(null, false,
-                        req.flash('loginMessage', 'Invalid Password'));
+                        req.flash('message', 'Invalid Password'));
                   }
             // User and password both match, return user from 
             // done method which will be treated like success
@@ -75,7 +77,7 @@ module.exports = function (passport) {
                 if (user) {
                     console.log('User already exists');
                     return done(null, false,
-                            req.flash('registerMessage', 'User Already Exists'));
+                            req.flash('message', 'User Already Exists'));
                 } else {
                     // if there is no user with that email
                     // create the user

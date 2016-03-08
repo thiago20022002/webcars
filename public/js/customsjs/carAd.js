@@ -12,13 +12,13 @@ function placeCarAd(jsonFile) {
      * Divs containing the bootstrap thumbnail.
      * */
     adContent += "<div class='row'>";
-    adContent += "<div class='col-md-6 inner'>";
-    adContent += "<div class='thumbnail'>";
+    adContent += "<div class='col-md-6 adInner'>";
+    adContent += "<div class='adThumbnail'>";
 
     /*
      * Holds the Car Make, Model and Price
      * */
-    adContent += "<h3>" + jsonFile.make + " " + jsonFile.model +  "<span class='price'>$" + jsonFile.price + "</span></h3>";
+    adContent += "<h3>" + jsonFile.make + " " + jsonFile.model +  "<span class='adPrice'>$" + jsonFile.price + "</span></h3>";
 
     /*
      * Starts the Bootstrap Carousel to be able to click through multiple images.
@@ -53,7 +53,7 @@ function placeCarAd(jsonFile) {
         else{
             adContent += "<div class='item'>";
         }
-        adContent += "<img class='carousel-img' src='" + jsonFile.picture[carouselImages] + "' alt='Chania' width='460' height='345'>";
+        adContent += "<img class='adCarousel-img' src='" + jsonFile.picture[carouselImages] + "' alt='Chania' width='460' height='345'>";
         adContent += "</div>";
     }
     adContent += "</div>";
@@ -78,7 +78,7 @@ function placeCarAd(jsonFile) {
      * This is where the Seller's name, Views and description of the car will be.
      * */
     adContent += "<div class='caption'>";
-    adContent += "<a href=../profile/"+jsonFile.seller+"><p><span class='userName'>" + jsonFile.seller + "</span><span class='price'>Views: " + jsonFile.views + "</span></p></a>";
+    adContent += "<a href=../profile/"+jsonFile.seller+"><p><span class='adUserName'>" + jsonFile.seller + "</span><span class='price'>Views: " + jsonFile.views + "</span></p></a>";
     adContent += "<div class='container'>";
     adContent += "<p>"+jsonFile.description+"</p>";
     adContent += "<ul>";

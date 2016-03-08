@@ -3,12 +3,12 @@
  */
 
 
-function placeProfileContent(jsonFile) {
-    console.log(jsonFile);
+function placeProfileContent____(jsonFile) {
+    
     var profileContent = "";
 
     profileContent += "<div class='container row'>";
-    profileContent += "<div class='col-xs-6 col-md-3'>";
+    profileContent += "<div class='col-xs-6 col-md-5'>";
 
 
     //make sure the user provided a url to profile image.
@@ -26,7 +26,7 @@ function placeProfileContent(jsonFile) {
      *   @param lastName
      *   @param address
      * */
-    profileContent += "<div><h1>" + jsonFile.firstName + " " + jsonFile.lastName + "</h1>";
+    profileContent += "<div class='col-md-6'><h1>" + jsonFile.firstName + " " + jsonFile.lastName + "</h1>";
     profileContent += "<h5>" + jsonFile.address + "</h5>";
 
     /*

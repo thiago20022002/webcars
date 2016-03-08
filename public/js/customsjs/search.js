@@ -1,7 +1,7 @@
 
 
 function collectionPaser(collection) {
-
+   // console.log("here ", collection);
     var searchContent = "";
 
     /*
@@ -16,10 +16,11 @@ function collectionPaser(collection) {
     for (var searchAds = 0; searchAds < collection.length; searchAds++) {
 
         searchContent += "<div class='col-sm-6 col-md-4'>";
-        searchContent += "<div class='thumbnail'>";
+        // searchContent += "<div class='thumbnail'>";
+        searchContent += "<fieldset>";
+        searchContent += "<legend>"+collection[searchAds].make +"</legend>";;
         searchContent += "<h3><a href='/ad/" + collection[searchAds]._id + "'>" + collection[searchAds].make + " " + collection[searchAds].model + "</a><span class='price'>$" + collection[searchAds].price + "</span></h3>";
         searchContent += "<div id='myCarousel" + searchAds + "' class='carousel slide' data-ride='carousel'>";
-
 
         /*
          * For loop to add data targets to bootstrap thumbnail.
@@ -30,17 +31,17 @@ function collectionPaser(collection) {
             searchContent += "<li data-target='#myCarousel" + searchAds + "' data-slide-to=" + dataTargets + "></li>";
         }
         searchContent += "</ol>";
-
+        
         searchContent += "<div class='carousel-inner' role='listbox'>";
         for (var carouselImages = 0; carouselImages < collection[searchAds].picture.length; carouselImages++) {
-            console.log("Inside Carousel Images: " + carouselImages);
+           // console.log("Inside Carousel Images: " + carouselImages);
             if (carouselImages == 0) {
                 searchContent += "<div class='item active'>";
             }
             else {
                 searchContent += "<div class='item'>";
             }
-            console.log(collection[searchAds]);
+           // console.log(collection[searchAds]);
             searchContent += "<img class='carousel-img' src='" + collection[searchAds].picture[carouselImages] + "' alt='Chania' width='460' height='345'>";
             searchContent += "</div>";
         }
@@ -65,7 +66,7 @@ function collectionPaser(collection) {
          * */
         searchContent += "</div>";
 
-        searchContent += "</div>";
+        searchContent += "</fieldset>";
 
         /*
          * Closes "col-sm-6 col-md-4"
