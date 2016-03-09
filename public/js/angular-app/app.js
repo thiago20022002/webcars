@@ -61,7 +61,7 @@ app.config(function ($stateProvider, $locationProvider) {
                     }
                 },
                
-                authenticate: false
+                authenticate: true
             }).
             state('home.feedback', {
                 url: '',
@@ -85,7 +85,7 @@ app.config(function ($stateProvider, $locationProvider) {
                     }
                 },
                 cache: false,
-                authenticate: false
+                authenticate: true
             })
             .state('register', {
                 url: "/register",
