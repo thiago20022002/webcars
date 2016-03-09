@@ -1,91 +1,64 @@
-<div class="navbar navbar-inverse navbar-twitch" role="navigation">
-    <div class="container">
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- add header -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <span class="small-nav"> <span class="logo"> <B> </span> </span>
-                <span class="full-nav"> < Bootsnipp > </span>
-            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><span class='logo-web'>Web</span><span class='logo-cars'>Cars</span></a>
         </div>
-        <div class="">
+        <!-- menu items -->
+        <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="/">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Ads"> 
-                            <span class="fa fa-home"></span> 
-                        </span>
-                        <span class="full-nav"> Ads </span>
+                    <a ui-sref="index">
+                        <span class="fa fa-home fa-2x"></span> 
                     </a>
                 </li>
                 <li>
-                    <a href="/search">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Search"> 
-                            <span class="fa fa-search"></span> 
-                        </span>
-                        <span class="full-nav">Search </span>
+                    <a ui-sref="search">
+                        <span class="fa fa-search fa-2x"></span> 
                     </a>
                 </li>
-
                 <li ng-if="userExist == false">
-                    <a href="/login">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Login"> 
-                            <span class="fa fa-sign-in"></span> 
-                        </span>
-                        <span class="full-nav"> Sign In </span>
+                    <a ui-sref="login">
+                        <span class="fa fa-sign-in fa-2x"></span> 
                     </a>
                 </li>
                 <li ng-if="userExist == true" ng-controller='logoutCtrl'>
                     <a href="#" ng-click="sendLogOutGet()">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Logout"> 
-                            <span class="fa fa-sign-out"></span> 
-
-                        </span>
-                        <span class="full-nav">Sign Out</span>
-                    </a>
-                </li>
-                <li ng-if="userExist == true">
-                    <a href="/profile/{{username}}">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Profile"> 
-                            <span class="fa fa-user"></span> 
-                        </span>
-                        <span class="full-nav">Profile</span>
+                        <span class="fa fa-sign-out fa-2x"></span> 
                     </a>
                 </li>
 
+                <li ng-if="userExist == true">
+                    <a ui-sref="home({username: '{{username}}'})">
+                        <span class="fa fa-user fa-2x"></span> 
+                    </a>
+                </li>
 
                 <li ng-if="userExist == true">
-                    <a href="/profile/{{username}}/post">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Post"> 
-                            <span class="fa fa-sticky-note"></span> 
-                        </span>
-                        <span class="full-nav">Post </span>
+                    <a ui-sref="post({username: '{{username}}'})">
+                        <span class="fa fa-bullhorn fa-2x"></span> 
                     </a>
                 </li>
                 <li ng-if="userExist == false">
-                    <a href="/register">
-                        <span class="small-nav" data-toggle="tooltip" data-placement="right" title="Register"> 
-                            <span class="fa fa-user-plus"></span> 
-                        </span>
-                        <span class="full-nav">Register </span>
+                    <a ui-sref="register">
+                        <span class="fa fa-user-plus fa-2x"></span> 
                     </a>
                 </li>
-
-
             </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</div>
-
-
-<div class="col-md-12">
-    <div class="col-md-1">
-        <button type="button" class="btn btn-default btn-xs navbar-twitch-toggle">
-            <span class="glyphicon glyphicon-chevron-right nav-open"></span>		
-            <span class="glyphicon glyphicon-chevron-left nav-close"></span>
-        </button>
-    </div>
-    <div class="col-md-11">
-        <div ng-if="userExist == true">
-            <h4>Wecome {{username}}.</h4>
+            <!-- social media icons -->
+            <ul class="nav navbar-nav navbar-right social">
+                <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-lg fa-linkedin"></i></a></li>
+            </ul>
         </div>
     </div>
-</div>
+</nav>

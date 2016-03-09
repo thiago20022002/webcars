@@ -2,9 +2,6 @@
 
 /* global angular */
 
-
-
-
 var app = angular.module('app',
         [
             'ui.router'
@@ -52,6 +49,30 @@ app.config(function ($stateProvider, $locationProvider) {
         authenticate: false
     })
             .state('home', {
+                url: "/home/:username",
+                views: {
+                    "navView": {
+                        templateUrl: "/partials/navBarTemplate",
+                        controller: "navBarTemplateCtrl"
+                    },
+                    "mainView": {
+                        templateUrl: "/partials/homeTemplate",
+                        controller: "homeTemplateCtrl"
+                    }
+                },
+               
+                authenticate: false
+            }).
+            state('home.feedback', {
+                url: '',
+                views: {
+                    "feedbackView": {
+                        controller: "feedbackTemplateCtrl",
+                        templateUrl: "/partials/feedbackTemplate"
+                    }
+                },
+                authenticate: true
+            }).state('profile', {
                 url: "/profile/:username",
                 views: {
                     "navView": {
@@ -63,22 +84,24 @@ app.config(function ($stateProvider, $locationProvider) {
                         controller: "profileTemplateCtrl"
                     }
                 },
+                cache: false,
                 authenticate: false
-            }).state('register', {
-        url: "/register",
-        views: {
-            "navView": {
-                controller: "navBarTemplateCtrl",
-                templateUrl: "/partials/navBarTemplate"
-            },
-            "mainView": {
-                templateUrl: "/partials/registerTemplate",
-                controller: "errorHandlerTemplateCtrl"
-            }
-        },
-        authenticate: false
-    }).state('post', {
-        url: "/profile/:username/post",
+            })
+            .state('register', {
+                url: "/register",
+                views: {
+                    "navView": {
+                        controller: "navBarTemplateCtrl",
+                        templateUrl: "/partials/navBarTemplate"
+                    },
+                    "mainView": {
+                        templateUrl: "/partials/registerTemplate",
+                        controller: "errorHandlerTemplateCtrl"
+                    }
+                },
+                authenticate: false
+            }).state('post', {
+        url: "/home/:username/post",
         views: {
             "navView": {
                 controller: "navBarTemplateCtrl",
@@ -102,7 +125,22 @@ app.config(function ($stateProvider, $locationProvider) {
             }
         },
         authenticate: false
+    }).state('search', {
+        url: "/search",
+        views: {
+            "navView": {
+                controller: "navBarTemplateCtrl",
+                templateUrl: "/partials/navBarTemplate"
+            },
+            "mainView": {
+                templateUrl: "/partials/searchTemplate"
+               
+            }
+        },
+        authenticate: false
     });
+    
+    ;
 
     $locationProvider.html5Mode(true);
 });

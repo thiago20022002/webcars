@@ -7,11 +7,11 @@ function loadNavBar() {
         event.preventDefault();
         $('.navbar-twitch').toggleClass('open');
         $("body").css("padding-left", "265");
-        console.log("1111");
+
     });
 
     $('.nav-style-toggle').on('click', function (event) {
-        console.log("hhehehehe");
+
         event.preventDefault();
         var $current = $('.nav-style-toggle.disabled');
         $(this).addClass('disabled');

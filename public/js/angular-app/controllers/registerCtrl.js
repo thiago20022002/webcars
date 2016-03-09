@@ -19,17 +19,17 @@ app.controller('registerCtrl', function ($scope, $http, $rootScope, $state) {
     $scope.sendRegisterPost = function () {
         $http.post('/api/register', $scope.registerData).
                 then(function (object) {
-
+                    console.log( object.data);
                     $rootScope.session = {};
-                    $rootScope.session.user = object.user;
+                    $rootScope.session.user = object.data.user;
                     $rootScope.errorJson = undefined;
-                    $state.go("home", {'username': object.user});
+                    $state.go("home", {'username': object.data.user});
                 }).
                 catch(function (object, status) {
                     console.log(object);
                     $rootScope.session = undefined;
                     $rootScope.errorJson = object;
-                    $state.go($state.current, {}, {reload: true});
+                    $state.go($state.current, {});
                 });
     };
 });

@@ -3,21 +3,30 @@
         <% include ../bodyparts/header %>
         <base href="/"/>
         <script src="/js/customsjs/search.js"></script>
-
         <!--
         <link rel="stylesheet" href="/stylesheets/search.css">
         -->
     </head>
     <body ng-controller="appCtrl">
-        <div ui-view="navView">
-            <% include ../partials/navBarTemplate %>
+
+        <div class="col-md-2">
+            <div class='pull-right'>
+            <div class="main-edges-left"></div>
+            </div>
         </div>
+        <div class='col-md-8'>
 
-        <div ui-view="mainView" id="bodyView">
+            <div ui-view="navView">
+                <% include ../partials/navBarTemplate %>
+            </div>
 
+            <div ui-view="mainView" id="bodyView">
 
+            </div>
         </div>
-
+        <div class="col-md-2">
+            <div class="main-edges-right"></div>
+        </div>
         <script src="/libs/angular/angular.min.js"></script>
         <script src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
         <script src="/js/angular-app/app.js"></script>

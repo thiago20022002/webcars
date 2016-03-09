@@ -1,5 +1,5 @@
 .price-tag{
- 
+
     font-size : 30px;
     color: red;
 }
@@ -11,4 +11,46 @@
     border-top: 1px solid silver;
     border-bottom: 1px solid silver;
     font-size: 20px;
+}
+.round_img {
+    display:block;
+    border-radius: 50%;
+    max-width: 60px;
+    height: 60px;
+    border: 1px solid #ccc;
+}
+
+.user-name{
+    color: brown;
+    font-size: 20px;
+}
+
+
+.right-line{
+    border-right: 1px solid silver;
+}
+
+.profile-img { 
+    vertical-align: middle;
+    width: 200px;
+    max-height: 200px;
+    display: -moz-inline-box; /* Firefox 2 */
+    display: inline-block;
+}
+
+.user-ads {
+    vertical-align: middle;
+    max-width: 150px;
+    max-height: 150px;
+    display: -moz-inline-box; /* Firefox 2 */
+    display: inline-block;
+}
+.ad-small-make{
+
+
+}
+
+.ad-small-model{
+    color: brown;
+    font-size: 15px;
 }

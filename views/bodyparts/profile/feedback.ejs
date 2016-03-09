@@ -1,0 +1,27 @@
+<h4>
+    <span class="fa fa-comment">
+    </span>Feedbacks 
+    <span class="badge">{{feedbacks.length}}
+    </span>
+</h4>
+
+
+<div class='feedBackPanels'>
+    <ul class=" list-group" ng-repeat="feed in feedbacks">
+
+        <li class="list-group-item col-md-12">
+
+            <div class="col-md-2 right-line">
+                <a href="/profile/{{feed.username}}">
+                <img class="round_img" src="{{feed.url}}">
+                </a>
+              </div>    
+
+
+            <div class="col-md-10">
+                <span class="user-name">{{feed.username}}</span>
+                :<span class="user-comment">{{feed.comment}}</span>
+            </div>
+        </li>
+    </ul>
+</div>

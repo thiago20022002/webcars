@@ -16,22 +16,22 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/api/userData/:username', function (req, res) {
-    
+
     var user = req.params.username;
     console.log(user);
-    
-   // if (req.user) {
-        Users.findOne({username: user}, function (err, client) {
-            if (err) {
-                //send a modified client json, password security
-                res.header(400).send({'username': 'error'});
-            } else {
-                res.send(client);
-            }
-        });
-  //  } else {
-  //      res.header(400).send({'username': 'not-found'});
-  ///  }
+
+    // if (req.user) {
+    Users.findOne({username: user}, function (err, client) {
+        if (err) {
+            //send a modified client json, password security
+            res.header(400).send({'username': 'error'});
+        } else {
+            res.send(client);
+        }
+    });
+    //  } else {
+    //      res.header(400).send({'username': 'not-found'});
+    ///  }
 });
 
 
@@ -50,14 +50,14 @@ router.get('/api/getCarData/:id', function (req, res) {
     Ads.findOne({'_id': req.params.id}, function (err, ad) {
         //res.render('pages/ad', {user: req.user, adJson: JSON.stringify(ad)});
         res.send(ad);
-    
+
     });
 });
 
 
 router.get('/partials/:name', function (req, res)
 {
-    console.log("***************************************");
+
     var name = req.params.name;
     console.log("GETTING PARTIAL " + name);
     res.render('partials/' + name, {user: req.user});
@@ -79,7 +79,6 @@ router.get('/api/authenticate/success', function (req, res) {
         res.status(400).json({message: "error", error: true});
     }
 });
-
 
 router.get('/api/logout', function (req, res) {
     req.logout();
@@ -104,8 +103,8 @@ router.post('/api/login', passport.authenticate('login', {
     failureFlash: true // allow flash messages
 }));
 
-router.post('/api/postAd', function(req, res){
-    console.log("HERE!!!!!!!!!!!!!");
+router.post('/api/postAd', function (req, res) {
+
     var ad = new Ads({});
     ad.store(req);
     ad.save();
@@ -120,13 +119,48 @@ router.post('/api/postAd', function(req, res){
         new : true
     },
     function (err, user) {
-        if (err){
+        if (err) {
             res.header(401).send("ERROR");
         }
-        res.json({'message':'success'});
+        res.json({'message': 'success'});
     });
 
 });
+
+
+router.post('/api/:client/feedback', isLoggedIn, function (req, res) {
+
+    var fed = new Feedback();
+    fed.username = req.user.username;
+    
+    console.log(req.body.feedback);
+    
+    fed.url = req.user.profilePictureUrl;
+    fed.comment = req.body.feedback;
+
+    console.log(fed);
+
+    Users.update(
+            {
+                username: req.params.client
+            },
+    {
+        $push: {"feedbacks": fed}
+    },
+    {
+        new : true
+    },
+    function (err, user) {
+        if (err) {
+            res.json({'message': 'failed'});
+
+            return;
+        }
+        res.json({'message': 'success'});
+
+    });
+});
+
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())

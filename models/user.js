@@ -7,6 +7,7 @@ var feedbackSchema = new mongoose.Schema({
     username: String,
     firstName: String,
     lastname : String,
+    url : String,
     comment: String
 });
 
@@ -46,12 +47,7 @@ adSchema.methods.store = function (req) {
     this.description =  req.body.description;
     this.picture.push(req.body.imageUrl);
 };
-userSchema.methods.addFeedback = function(user, feedbck){
-   var fed =  new feedbackSchema();
-   fed.username = user.username;
-   fed.comment = feedbck;
-   this.feedback.push(fed);
-};
+
 
 mongoose.model('Users_col', userSchema);
 mongoose.model('Ads_col', adSchema);

@@ -48,12 +48,12 @@ function placeProfileContent____(jsonFile) {
      * */
     profileContent += "<div class='innerDiv'>";
     profileContent += "<div class='container-outer'>";
-    profileContent += "<h4>Ads by <a href=http://localhost:3000/'" + jsonFile.username + "'>" + jsonFile.firstName + " " + jsonFile.lastName + "</a> (" + jsonFile.postedAds.length + ")</h4>";
+   // profileContent += "<h4>Ads by <a href=http://localhost:3000/'" + jsonFile.username + "'>" + jsonFile.firstName + " " + jsonFile.lastName + "</a> (" + jsonFile.postedAds.length + ")</h4>";
     profileContent += "<div class='row moreAdsDiv container-inner'>";
 
     for (var moreAds = 0; moreAds < jsonFile.postedAds.length; moreAds++) {
         profileContent += "<div class='col-xs-6 col-md-3 user-ads'>";
-        profileContent += "<a href='http://localhost:3000/ad/" + jsonFile.postedAds[moreAds]._id + "' class='thumbnail'>";
+     //   profileContent += "<a href='http://localhost:3000/ad/" + jsonFile.postedAds[moreAds]._id + "' class='thumbnail'>";
         profileContent += "<img src='" + jsonFile.postedAds[moreAds].picture[0] + "' alt='...'>";
         profileContent += "</a>";
         profileContent += "</div>";

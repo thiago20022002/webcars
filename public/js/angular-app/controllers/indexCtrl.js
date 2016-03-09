@@ -32,7 +32,7 @@ app.controller('viewAdTemplateCtrl', function ($scope, $http, $stateParams) {
             '/api/getCarData/'+$stateParams.id
             ).
             then(function (object, status, headers, config) {
-                console.log("sssssssssssssss");
+                
                 $scope.username = object.data.seller;
                 $scope.make = object.data.make;
                 $scope.model = object.data.model;

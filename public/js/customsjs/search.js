@@ -1,7 +1,7 @@
 
 
 function collectionPaser(collection) {
-   // console.log("here ", collection);
+    // console.log("here ", collection);
     var searchContent = "";
 
     /*
@@ -18,8 +18,12 @@ function collectionPaser(collection) {
         searchContent += "<div class='col-sm-6 col-md-4'>";
         // searchContent += "<div class='thumbnail'>";
         searchContent += "<fieldset>";
-        searchContent += "<legend>"+collection[searchAds].make +"</legend>";;
-        searchContent += "<h3><a href='/ad/" + collection[searchAds]._id + "'>" + collection[searchAds].make + " " + collection[searchAds].model + "</a><span class='price'>$" + collection[searchAds].price + "</span></h3>";
+        searchContent += "<legend>";
+        searchContent += "<span class='ad-small-make'>" + collection[searchAds].make + "</span>";
+        searchContent += "<span class='ad-small-model'>" + collection[searchAds].model + "</span>";
+        searchContent += "<span class='price pull-right'>$" + collection[searchAds].price + "</span>";
+        searchContent += "</legend>";
+
         searchContent += "<div id='myCarousel" + searchAds + "' class='carousel slide' data-ride='carousel'>";
 
         /*
@@ -31,21 +35,24 @@ function collectionPaser(collection) {
             searchContent += "<li data-target='#myCarousel" + searchAds + "' data-slide-to=" + dataTargets + "></li>";
         }
         searchContent += "</ol>";
-        
+
         searchContent += "<div class='carousel-inner' role='listbox'>";
         for (var carouselImages = 0; carouselImages < collection[searchAds].picture.length; carouselImages++) {
-           // console.log("Inside Carousel Images: " + carouselImages);
-            if (carouselImages == 0) {
+            // console.log("Inside Carousel Images: " + carouselImages);
+            if (carouselImages === 0) {
                 searchContent += "<div class='item active'>";
             }
             else {
                 searchContent += "<div class='item'>";
             }
-           // console.log(collection[searchAds]);
-            searchContent += "<img class='carousel-img' src='" + collection[searchAds].picture[carouselImages] + "' alt='Chania' width='460' height='345'>";
+            // console.log(collection[searchAds]);
+            searchContent += "<a href='/ad/"+collection[searchAds]._id+"'>";
+            searchContent += "<img class='carousel-img user-ads' src='" + collection[searchAds].picture[carouselImages] + "' alt='Chania'>";
+            searchContent += "</a>";
             searchContent += "</div>";
         }
         searchContent += "</div>";
+
 
         searchContent += "<a class='left carousel-control' href=#myCarousel" + searchAds + "' role='button' data-slide='prev'>";
         searchContent += "<span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>";
@@ -58,13 +65,14 @@ function collectionPaser(collection) {
         searchContent += "</a>";
 
         searchContent += "<div class='caption'>";
-        searchContent += "<p><span class='price'>Views: " + collection[searchAds].views + "</span></p>";
         searchContent += "</div>";
 
         /*
          * Closes Thumbnail
          * */
         searchContent += "</div>";
+        searchContent += "<p><span class='price pull-right'>Views: " + collection[searchAds].views + "</span></p>";
+
 
         searchContent += "</fieldset>";
 
