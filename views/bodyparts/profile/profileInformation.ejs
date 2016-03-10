@@ -12,14 +12,14 @@
     </div>
 </div>
 
-<div class="innerDiv col-md-12">
+<div class="col-md-12">
     <div class="col-md-2"></div>
     <div class="col-md-10">
-        <div class="container-outer">
+        <div>
             <h4><span><i class="fa fa-bullhorn"></i> </span> Ads by
                 <a href="/profile/{{username}}">{{firstName}} {{lastName}}</a> <span class="badge">{{adsCollection.length}}</span>
             </h4>
-            <div class="row moreAdsDiv container-inner">
+            <div>
                 <div ng-repeat="ad in adsCollection">
 
                     <div class="col-xs-6 col-md-3">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            
         </div>
     </div>
 </div>

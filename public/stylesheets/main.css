@@ -50,11 +50,6 @@ body {
 
 } 
 
-.price-tag{
-
-    font-size : 30px;
-    color: red;
-}
 .model-tag{
     font-size : 20px;    
     color: brown;
@@ -92,8 +87,10 @@ body {
 
 .user-ads {
     vertical-align: middle;
-    max-width: 150px;
-    max-height: 150px;
+    max-width: 110px;
+    max-height: 110px;
+    width: 100%;
+    height: 100%;
     display: -moz-inline-box; /* Firefox 2 */
     display: inline-block;
 }
@@ -104,5 +101,5 @@ body {
 
 .ad-small-model{
     color: brown;
-    font-size: 15px;
+    font-size: 10px;
 }

@@ -1,10 +1,10 @@
-.price-tag{
+.price-tag, .price{
 
-    font-size : 30px;
-    color: red;
+    font-size : 20px;
+   
 }
 .model-tag{
-    font-size : 20px;    
+    font-size : 15px;    
     color: brown;
 }
 .description-box{
@@ -38,13 +38,6 @@
     display: inline-block;
 }
 
-.user-ads {
-    vertical-align: middle;
-    max-width: 150px;
-    max-height: 150px;
-    display: -moz-inline-box; /* Firefox 2 */
-    display: inline-block;
-}
 .ad-small-make{
 
 
