@@ -14,17 +14,17 @@
         <!-- menu items -->
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="active" id="index-nav">
                     <a ui-sref="index">
                         <span class="fa fa-home fa-2x"></span> 
                     </a>
                 </li>
                 <li>
-                    <a ui-sref="search">
+                    <a ui-sref="search" id="search-nav">
                         <span class="fa fa-search fa-2x"></span> 
                     </a>
                 </li>
-                <li ng-if="userExist == false">
+                <li ng-if="userExist == false" id="login-nav">
                     <a ui-sref="login">
                         <span class="fa fa-sign-in fa-2x"></span> 
                     </a>
@@ -35,18 +35,18 @@
                     </a>
                 </li>
 
-                <li ng-if="userExist == true">
+                <li ng-if="userExist == true" id="home-nav">
                     <a ui-sref="home({username: '{{username}}'})">
                         <span class="fa fa-user fa-2x"></span> 
                     </a>
                 </li>
 
                 <li ng-if="userExist == true">
-                    <a ui-sref="post({username: '{{username}}'})">
+                    <a ui-sref="post({username: '{{username}}'})" id="post-nav">
                         <span class="fa fa-bullhorn fa-2x"></span> 
                     </a>
                 </li>
-                <li ng-if="userExist == false">
+                <li ng-if="userExist == false" id="register-nav">
                     <a ui-sref="register">
                         <span class="fa fa-user-plus fa-2x"></span> 
                     </a>

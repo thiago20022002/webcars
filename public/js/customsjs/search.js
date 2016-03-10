@@ -13,9 +13,17 @@ function collectionPaser(collection) {
      * For loop places each car ad into the html
      * */
 
-    for (var searchAds = 0; searchAds < collection.length; searchAds++) {
 
-        searchContent += "<div class='col-sm-6 col-md-4'>";
+
+    searchContent += "<div class='col-md-12'>";
+    for (var searchAds = 0; searchAds < collection.length; searchAds++) {
+        if (searchAds % 3 == 0) {
+            searchContent += "</div>";
+            searchContent += "<div class='col-md-12'>";
+        }
+
+
+        searchContent += "<div class='col-md-4'>";
         // searchContent += "<div class='thumbnail'>";
         searchContent += "<fieldset>";
         searchContent += "<legend>";
@@ -46,7 +54,7 @@ function collectionPaser(collection) {
                 searchContent += "<div class='item'>";
             }
             // console.log(collection[searchAds]);
-            searchContent += "<a href='/ad/"+collection[searchAds]._id+"'>";
+            searchContent += "<a href='/ad/" + collection[searchAds]._id + "'>";
             searchContent += "<img class='carousel-img user-ads' src='" + collection[searchAds].picture[carouselImages] + "' alt='Chania'>";
             searchContent += "</a>";
             searchContent += "</div>";
@@ -81,7 +89,7 @@ function collectionPaser(collection) {
          * */
         searchContent += "</div>";
     }
-
+    searchContent += "</div>";
     /*
      * End of row container.
      * */

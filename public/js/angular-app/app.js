@@ -18,22 +18,22 @@ var app = angular.module('app',
         });
 
 app.config(function ($stateProvider, $locationProvider) {
-    $stateProvider
-            .state('index', {
-                url: "/",
-                views: {
-                    "navView": {
-                        templateUrl: "/partials/navBarTemplate",
-                        controller: "navBarTemplateCtrl"
+    $stateProvider.state('index', {
+        url: "/",
+        views: {
+            "navView": {
+                templateUrl: "/partials/navBarTemplate",
+                controller: "navBarTemplateCtrl"
 
-                    },
-                    "mainView": {
-                        controller: "indexTemplateCtrl",
-                        templateUrl: "/partials/mainTemplate"
-                    }
-                },
-                authenticate: false
-            }).state('login', {
+            },
+            "mainView": {
+                controller: "indexTemplateCtrl",
+                templateUrl: "/partials/mainTemplate"
+            }
+        },
+        iconNavId: "index-nav",
+        authenticate: false
+    }).state('login', {
         url: "/login",
         views: {
             "navView": {
@@ -46,61 +46,62 @@ app.config(function ($stateProvider, $locationProvider) {
             },
             params: {errorMessage: null}
         },
+        iconNavId: "login-nav",
         authenticate: false
-    })
-            .state('home', {
-                url: "/home/:username",
-                views: {
-                    "navView": {
-                        templateUrl: "/partials/navBarTemplate",
-                        controller: "navBarTemplateCtrl"
-                    },
-                    "mainView": {
-                        templateUrl: "/partials/homeTemplate",
-                        controller: "homeTemplateCtrl"
-                    }
-                },
-               
-                authenticate: true
-            }).
-            state('home.feedback', {
-                url: '',
-                views: {
-                    "feedbackView": {
-                        controller: "feedbackTemplateCtrl",
-                        templateUrl: "/partials/feedbackTemplate"
-                    }
-                },
-                authenticate: true
-            }).state('profile', {
-                url: "/profile/:username",
-                views: {
-                    "navView": {
-                        templateUrl: "/partials/navBarTemplate",
-                        controller: "navBarTemplateCtrl"
-                    },
-                    "mainView": {
-                        templateUrl: "/partials/profileTemplate",
-                        controller: "profileTemplateCtrl"
-                    }
-                },
-                cache: false,
-                authenticate: true
-            })
-            .state('register', {
-                url: "/register",
-                views: {
-                    "navView": {
-                        controller: "navBarTemplateCtrl",
-                        templateUrl: "/partials/navBarTemplate"
-                    },
-                    "mainView": {
-                        templateUrl: "/partials/registerTemplate",
-                        controller: "errorHandlerTemplateCtrl"
-                    }
-                },
-                authenticate: false
-            }).state('post', {
+    }).state('home', {
+        url: "/home/:username",
+        views: {
+            "navView": {
+                templateUrl: "/partials/navBarTemplate",
+                controller: "navBarTemplateCtrl"
+            },
+            "mainView": {
+                templateUrl: "/partials/homeTemplate",
+                controller: "homeTemplateCtrl"
+            }
+        },
+        iconNavId: "home-nav",
+        authenticate: true
+    }).state('home.feedback', {
+        url: '',
+        views: {
+            "feedbackView": {
+                controller: "feedbackTemplateCtrl",
+                templateUrl: "/partials/feedbackTemplate"
+            }
+        },
+        iconNavId: "home-nav",
+        authenticate: true
+    }).state('profile', {
+        url: "/profile/:username",
+        views: {
+            "navView": {
+                templateUrl: "/partials/navBarTemplate",
+                controller: "navBarTemplateCtrl"
+            },
+            "mainView": {
+                templateUrl: "/partials/profileTemplate",
+                controller: "profileTemplateCtrl"
+            }
+        },
+        iconNavId: "profile-nav",
+        cache: false,
+        authenticate: true
+    }).state('register', {
+        url: "/register",
+        views: {
+            "navView": {
+                controller: "navBarTemplateCtrl",
+                templateUrl: "/partials/navBarTemplate"
+            },
+            "mainView": {
+                templateUrl: "/partials/registerTemplate",
+                controller: "errorHandlerTemplateCtrl"
+            }
+        },
+        iconNavId: "register-nav",
+        authenticate: false
+    }).state('post', {
         url: "/home/:username/post",
         views: {
             "navView": {
@@ -124,6 +125,7 @@ app.config(function ($stateProvider, $locationProvider) {
                 controller: "viewAdTemplateCtrl"
             }
         },
+        iconNavId: "post-nav",
         authenticate: false
     }).state('search', {
         url: "/search",
@@ -134,12 +136,12 @@ app.config(function ($stateProvider, $locationProvider) {
             },
             "mainView": {
                 templateUrl: "/partials/searchTemplate"
-               
             }
         },
+        iconNavId: "search-nav",
         authenticate: false
     });
-    
+
     ;
 
     $locationProvider.html5Mode(true);
