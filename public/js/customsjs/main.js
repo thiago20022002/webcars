@@ -1,5 +1,3 @@
-console.log("HERE LODED!s");
-
 
 function loadNavBar() {
     $('.navbar-nav [data-toggle="tooltip"]').tooltip();

@@ -3,8 +3,12 @@
 
 <div ng-controller="registerCtrl" class="col-md-4">
 
-    <form ng-submit="sendRegisterPost()">
+    <form id="registerForm" name="registerFormName">
         <fieldset>
+            <ul class="nav nav-tabs" id="tabs-nav">
+                <li class="active"><a href="#info-tab" data-toggle="tab">Account<i class="fa"></i></a></li>
+                <li><a href="#address-tab" data-toggle="tab">Personal<i class="fa"></i></a></li>
+            </ul>
             <!-- Form Name -->
             <legend>Create account with us. </legend>
             <div class="form-group" ng-if="error == true">
@@ -19,23 +23,29 @@
                             <h4>Account Information</h4>  
                         </div>
                         <!-- Text input-->
-                        <div class="form-group  input-group input-group-md">
-                            <span class="input-group-addon" > <i class="fa fa-user"></i></span>
-                            <input class="form-control input-md" ng-model="registerData.username" type="text" placeholder="email">
+                        <div class=" form-group   groupContainer">
+                            <div class="input-group input-group-md">
+                                <span class="input-group-addon" > <i class="fa fa-user"></i></span>
+                                <input class="form-control input-md" ng-model="registerData.username" name="username" type="text" placeholder="email">
+                            </div>
                         </div>
 
                         <!-- Password input-->
-                        <div class="form-group input-group input-group-md">
-                            <input class="form-control input-md" ng-model="registerData.password" type="password" placeholder="password" >
-                            <span class="input-group-addon" ><i class="fa fa-key"></i> </span>
-                        </div>
+                        <div class=" form-group   groupContainer">
+                            <div class="input-group input-group-md">
 
-                        <div class="form-group input-group input-group-md">
-                            <input class="form-control input-md" ng-model="registerData.confirm" type="password" placeholder="confirm password">
-                            <span class="input-group-addon" ><i class="fa fa-check"></i> </span>
+                                <span class="input-group-addon" ><i class="fa fa-key"></i> </span>
+                                <input class="form-control input-md" ng-model="registerData.password" name="password" type="password" placeholder="password" >
+                            </div>
+                        </div>
+                        <div class=" form-group   groupContainer">
+                            <div class="input-group input-group-md">
+                                <span class="input-group-addon" ><i class="fa fa-check"></i> </span>
+                                <input class="form-control input-md" ng-model="registerData.confirm" name="confirmPassword"  type="password" placeholder="confirm password">
+                            </div>
                         </div>
                         <span class="pull-right">
-                            <a href="#address-tab" data-toggle="tab">
+                            <a href="#address-tab" data-toggle="tab" onclick = "activateTabs()">
                                 <i class="fa fa-arrow-right fa-3x"></i>
                             </a>
                         </span>    
@@ -44,7 +54,7 @@
                 </div>
                 <div class="tab-pane" id="address-tab">
                     <div class="col-md-12">
-                        <a href="#info-tab" data-toggle="tab">
+                        <a href="#info-tab" data-toggle="tab" onclick = "activateTabs()">
                             <i class="fa fa-arrow-left fa-3x"></i>
                         </a>
                         <div class="form-group">
@@ -53,29 +63,29 @@
                         <!-- Text input-->
                         <div class="form-group">
 
-                            <input class="form-control input-md" ng-model="registerData.fname" type="text" placeholder="First Name">
+                            <input class="form-control input-md" ng-model="registerData.fname" type="text" name="fname" placeholder="First Name">
                             <!-- Text input-->
                         </div>
                         <div class="form-group">
-                            <input class="form-control input-md" ng-model="registerData.lname" type="text" placeholder="Last Name" >
+                            <input class="form-control input-md" ng-model="registerData.lname" type="text" name="lname"  placeholder="Last Name" >
                         </div>
 
 
                         <hr>
                         <!-- Text input-->
                         <div class="form-group">
-                            <input class="form-control input-md" ng-model="registerData.phone" type="text" placeholder="(xxx)(---)(xxxx)" >
+                            <input class="form-control input-md" ng-model="registerData.phone" type="text" name="phone"  placeholder="(xxx)(---)(xxxx)" >
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <input class="form-control input-md" ng-model="registerData.address" type="text" placeholder="location">
+                            <input class="form-control input-md" ng-model="registerData.address" type="text" name="address" placeholder="location">
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
 
-                            <input class="form-control input-md" ng-model="registerData.profileURL" type="text" placeholder="path to image" >
+                            <input class="form-control input-md" ng-model="registerData.profileURL" type="text" name="url" placeholder="path to image" >
                         </div>
 
                         <div class="form-group">
@@ -91,5 +101,6 @@
             </div>
         </fieldset>
     </form>
+    <script src="/js/customsjs/validation/register.js"></script>
 </div>
 

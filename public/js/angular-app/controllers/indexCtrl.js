@@ -29,10 +29,10 @@ app.controller('indexTemplateCtrl', function ($scope, $http) {
 app.controller('viewAdTemplateCtrl', function ($scope, $http, $stateParams) {
 
     $http.get(
-            '/api/getCarData/'+$stateParams.id
+            '/api/getCarData/' + $stateParams.id
             ).
             then(function (object, status, headers, config) {
-                
+
                 $scope.username = object.data.seller;
                 $scope.make = object.data.make;
                 $scope.model = object.data.model;

@@ -13,42 +13,54 @@
         </div>
         <!-- menu items -->
         <div class="collapse navbar-collapse" id="navbar1">
-            <ul class="nav navbar-nav">
-                <li class="active" id="index-nav">
+            <ul class="nav navbar-nav" >
+                <li ng-class="{active : isSelected('index-nav')}">
                     <a ui-sref="index">
-                        <span class="fa fa-home fa-2x"></span> 
+                        <span class="fa fa-home fa-2x" style="display:block; text-align:center"></span> 
+                        Home
                     </a>
                 </li>
-                <li>
-                    <a ui-sref="search" id="search-nav">
-                        <span class="fa fa-search fa-2x"></span> 
+                <li ng-class="{active : isSelected('search-nav')}">
+                    <a ui-sref="search" >
+              
+                        <span class="fa fa-search fa-2x" style="display:block; text-align:center"></span>
+                        Search
                     </a>
                 </li>
-                <li ng-if="userExist == false" id="login-nav">
+                <li ng-if="userExist == false" ng-class="{active : isSelected('login-nav')}">
+                  
                     <a ui-sref="login">
-                        <span class="fa fa-sign-in fa-2x"></span> 
+                        <span class="fa fa-sign-in fa-2x" style="display:block; text-align:center"></span>
+                        Login
                     </a>
                 </li>
                 <li ng-if="userExist == true" ng-controller='logoutCtrl'>
                     <a href="#" ng-click="sendLogOutGet()">
-                        <span class="fa fa-sign-out fa-2x"></span> 
+                        <span class="fa fa-sign-out fa-2x" style="display:block; text-align:center"></span> 
+                        Logout
                     </a>
                 </li>
 
-                <li ng-if="userExist == true" id="home-nav">
+                <li ng-if="userExist == true"  ng-class="{active : isSelected('home-nav')}" >
+
                     <a ui-sref="home({username: '{{username}}'})">
-                        <span class="fa fa-user fa-2x"></span> 
+                        <span class="fa fa-user fa-2x" style="display:block; text-align:center"></span>
+                        Profile
                     </a>
                 </li>
 
-                <li ng-if="userExist == true">
-                    <a ui-sref="post({username: '{{username}}'})" id="post-nav">
-                        <span class="fa fa-bullhorn fa-2x"></span> 
+                <li ng-if="userExist == true"  ng-class="{active : isSelected('post-nav')}">
+
+                    <a ui-sref="post({username: '{{username}}'})">
+                        <span class="fa fa-bullhorn fa-2x" style="display:block; text-align:center"></span>
+                        Post Ads
                     </a>
                 </li>
-                <li ng-if="userExist == false" id="register-nav">
+                <li ng-if="userExist == false" ng-class="{active : isSelected('register-nav')}">
+
                     <a ui-sref="register">
-                        <span class="fa fa-user-plus fa-2x"></span> 
+                        <span class="fa fa-user-plus fa-2x" style="display:block; text-align:center"></span>
+                        Register
                     </a>
                 </li>
             </ul>
@@ -61,4 +73,7 @@
             </ul>
         </div>
     </div>
+    
+    <script src="/js/customsjs/navBar.js"></script>
+
 </nav>

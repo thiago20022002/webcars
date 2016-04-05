@@ -4,6 +4,7 @@
 /* global app */
 
 app.controller('loginCtrl', function ($scope, $rootScope, $state, $http) {
+    
     $scope.sendLoginPost = function () {
         $http.post('/api/login', $scope.loginData).
                 then(function (object) {
