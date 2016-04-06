@@ -35,7 +35,7 @@ $('#postAdForm').formValidation({
                 },
                 notEmpty: {
                     message: 'provide year of the car'
-                },
+                }
             }
         },
         price: {
@@ -46,23 +46,26 @@ $('#postAdForm').formValidation({
                 notEmpty: {
                     message: 'The price of the car'
                 }
-                //^(.*\.(jpg|jpeg|bmp|png)$)?[^.]*$
+               
             }
         },
         url: {
             validators: {
                 notEmpty: {
                     message: 'The url path of the car'
-                }     
+                },
+                regexp: {
+                    regexp:  /\.(gif|jpg|jpeg|tiff|png)$/i,
+                    message: 'it is not a valid image'
+                }
             }
-            
+
         },
         description: {
             validators: {
                 notEmpty: {
                     message: 'The car description'
                 },
-                
             }
         }
 
@@ -104,7 +107,12 @@ $('#postAdForm').formValidation({
         }).on('success.form.fv', function (e) {
     // Prevent form submission
     e.preventDefault();
-   
+
+
+    var scope = angular.element(document.getElementById("postAdScopeID")).scope();
+    scope.$apply(function () {
+        scope.sendAdPost();
+    });
 
     // Do custom handler
     // such as sending data to server using Ajax ...

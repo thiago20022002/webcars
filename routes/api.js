@@ -47,12 +47,25 @@ router.get('/api/getData', function (req, res) {
 });
 
 router.get('/api/getCarData/:id', function (req, res) {
+    
+    //Increment views
+    Ads.update({"_id": req.params.id}, {$inc: {views: 1}}, function (err, res, ad) {
+        if (err) {
+         //   console.log('not good');
+        } else {
+         //   console.log('update succes ', ad);
+        }
+    });
+
+
     Ads.findOne({'_id': req.params.id}, function (err, ad) {
+       
         //res.render('pages/ad', {user: req.user, adJson: JSON.stringify(ad)});
         res.send(ad);
 
     });
 });
+
 
 
 router.get('/partials/:name', function (req, res)
@@ -76,7 +89,8 @@ router.get('/api/authenticate/success', function (req, res) {
     if (req.isAuthenticated()) {
         res.json({user: req.user.username});
     } else {
-        res.status(400).json({message: "error", error: true});
+
+        res.status(400).json({message: "session not authenticate", error: true});
     }
 });
 
@@ -112,18 +126,18 @@ router.post('/api/postAd', function (req, res) {
             {
                 username: req.user.username
             },
-    {
-        $push: {"postedAds": ad}
-    },
-    {
-        new : true
-    },
-    function (err, user) {
-        if (err) {
-            res.header(401).send("ERROR");
-        }
-        res.json({'message': 'success'});
-    });
+            {
+                $push: {"postedAds": ad}
+            },
+            {
+                new : true
+            },
+            function (err, user) {
+                if (err) {
+                    res.header(401).send("ERROR");
+                }
+                res.json({'message': 'success'});
+            });
 
 });
 
@@ -132,9 +146,9 @@ router.post('/api/:client/feedback', isLoggedIn, function (req, res) {
 
     var fed = new Feedback();
     fed.username = req.user.username;
-    
+
     console.log(req.body.feedback);
-    
+
     fed.url = req.user.profilePictureUrl;
     fed.comment = req.body.feedback;
 
@@ -144,21 +158,21 @@ router.post('/api/:client/feedback', isLoggedIn, function (req, res) {
             {
                 username: req.params.client
             },
-    {
-        $push: {"feedbacks": fed}
-    },
-    {
-        new : true
-    },
-    function (err, user) {
-        if (err) {
-            res.json({'message': 'failed'});
+            {
+                $push: {"feedbacks": fed}
+            },
+            {
+                new : true
+            },
+            function (err, user) {
+                if (err) {
+                    res.json({'message': 'failed'});
 
-            return;
-        }
-        res.json({'message': 'success'});
+                    return;
+                }
+                res.json({'message': 'success'});
 
-    });
+            });
 });
 
 

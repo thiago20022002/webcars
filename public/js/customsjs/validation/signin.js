@@ -15,17 +15,24 @@ $('#signinForm').formValidation({
             validators: {
                 notEmpty: {
                     message: 'The username is required'
+                },
+                regexp: {
+                    regexp:  /[^\s@]+@[^\s@]+\.[^\s@]+/,
+                    message: 'email is not valid'
                 }
             }
         },
         password: {
             validators: {
                 notEmpty: {
-                    message: 'The password name is required'
+                    message: 'the password name is required'
+                },
+                stringLength: {
+                    message: 'must be at least 8 characters',
+                    min: 4
                 }
             }
         }
-        
     }
 })
         .on('err.field.fv', function (e, data) {
@@ -61,11 +68,18 @@ $('#signinForm').formValidation({
                 // Focus on the field
                 $invalidFields.focus();
             }
-        }).on('success.form.fv', function(e) {
-                // Prevent form submission
-                e.preventDefault();
+        }).on('success.form.fv', function (e) {
+    // Prevent form submission
+    e.preventDefault();
 
-                // Do custom handler
-                // such as sending data to server using Ajax ...
-            });;
+
+    var scope = angular.element(document.getElementById("singinScopeID")).scope();
+    scope.$apply(function () {
+        scope.sendLoginPost();
+    });
+
+    // Do custom handler
+    // such as sending data to server using Ajax ...
+});
+;
 

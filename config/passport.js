@@ -69,7 +69,7 @@ module.exports = function (passport) {
             User.findOne({'username': username}, function (err, user) {
                 // In case of any error return
                 if (err) {
-                    console.log('Error in SignUp: ' + err);
+                   // console.log('Error in SignUp: ' + err);
                     return done(err);
                 }
                 // already exists

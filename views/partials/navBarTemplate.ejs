@@ -20,7 +20,7 @@
                         Home
                     </a>
                 </li>
-                <li ng-class="{active : isSelected('search-nav')}">
+                <li ng-if="false" ng-class="{active : isSelected('search-nav')}">
                     <a ui-sref="search" >
               
                         <span class="fa fa-search fa-2x" style="display:block; text-align:center"></span>
@@ -34,13 +34,6 @@
                         Login
                     </a>
                 </li>
-                <li ng-if="userExist == true" ng-controller='logoutCtrl'>
-                    <a href="#" ng-click="sendLogOutGet()">
-                        <span class="fa fa-sign-out fa-2x" style="display:block; text-align:center"></span> 
-                        Logout
-                    </a>
-                </li>
-
                 <li ng-if="userExist == true"  ng-class="{active : isSelected('home-nav')}" >
 
                     <a ui-sref="home({username: '{{username}}'})">
@@ -63,14 +56,23 @@
                         Register
                     </a>
                 </li>
+
+                <li ng-if="userExist == true" ng-controller='logoutCtrl'>
+                    <a href="#" ng-click="sendLogOutGet()">
+                        <span class="fa fa-sign-out fa-2x" style="display:block; text-align:center"></span> 
+                        Logout
+                    </a>
+                </li>
+
             </ul>
-            <!-- social media icons -->
+            <!-- social media icons 
             <ul class="nav navbar-nav navbar-right social">
                 <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
                 <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
                 <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
                 <li><a href="#"><i class="fa fa-lg fa-linkedin"></i></a></li>
             </ul>
+-->
         </div>
     </div>
     

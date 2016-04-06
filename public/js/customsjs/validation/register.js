@@ -13,7 +13,6 @@ function activateTabs() {
             $(this).addClass("active");
         }
     });
-
 }
 
 
@@ -33,21 +32,37 @@ $('#registerForm').formValidation({
             validators: {
                 notEmpty: {
                     message: 'The username is required'
+                },
+                regexp: {
+                    regexp: /[^\s@]+@[^\s@]+\.[^\s@]+/,
+                    message: 'Email is not valid'
                 }
             }
         },
         password: {
             validators: {
                 notEmpty: {
-                    message: 'The password name is required'
+                    message: 'The password is required'
+                },
+                stringLength: {
+                    message: 'must be at least 8 characters',
+                    min: 4
                 }
             }
         },
         confirmPassword: {
             validators: {
-                notEmpty: {
-                    message: 'confirm password is required'
+                stringLength: {
+                    message: 'must be at least 8 characters',
+                    min: 4
+                }, notEmpty: {
+                    message: 'the confirm password is required'
+                },
+                identical: {
+                    field: 'password',
+                    message: 'password does not match'
                 }
+
             }
         },
         fname: {
@@ -68,7 +83,12 @@ $('#registerForm').formValidation({
             validators: {
                 notEmpty: {
                     message: 'provide phone number'
+                },
+                regexp: {
+                    regexp: /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/,
+                    message: 'phone number is invalid'
                 }
+
             }
         },
         address: {
@@ -82,23 +102,26 @@ $('#registerForm').formValidation({
             validators: {
                 notEmpty: {
                     message: 'provide image url'
+                },
+                regexp: {
+                    regexp: /\.(gif|jpg|jpeg|tiff|png)$/i,
+                    message: 'it is not a valid image'
                 }
             }
+
         }
-        
+
     }
 })
         .on('err.field.fv', function (e, data) {
-             e.preventDefault();
+            e.preventDefault();
             // data.fv --> The FormValidation instance
 
             // Get the first invalid field
             var $invalidFields = data.fv.getInvalidFields().eq(0);
-
             // Get the tab that contains the first invalid field
             var $tabPane = $invalidFields.parents('.tab-pane'),
                     invalidTabId = $tabPane.attr('id');
-
             // If the tab is not active
             if (!$tabPane.hasClass('active')) {
                 // Then activate it
@@ -107,7 +130,6 @@ $('#registerForm').formValidation({
                         .each(function (index, tab) {
                             var tabId = $(tab).attr('id'),
                                     $li = $('a[href="#' + tabId + '"][data-toggle="tab"]').parent();
-
                             if (tabId === invalidTabId) {
                                 // activate the tab pane
                                 $(tab).addClass('active');
@@ -118,23 +140,25 @@ $('#registerForm').formValidation({
                                 $li.removeClass('active');
                             }
                         });
-
                 // Focus on the field
                 $invalidFields.focus();
-                
             }
-        }).on('success.form.fv', function(e) {
-                // Prevent form submission
-               
-                e.preventDefault();
-                sendRegisterPost();
+        }
+        ).on('success.form.fv', function (e) {
+// Prevent form submission
 
-                // Do custom handler
-                // such as sending data to server using Ajax ...
-            });;
+    e.preventDefault();
+    var scope = angular.element(document.getElementById("registerScopeID")).scope();
+    scope.$apply(function () {
+        scope.sendRegisterPost();
+    });
+    // Do custom handler
+    // such as sending data to server using Ajax ...
+});
+;
 /*
  * zipCode: {
-                        country: 'US',
-                        message: 'The value is not valid UK postcode'
-                    }
+ country: 'US',
+ message: 'The value is not valid UK postcode'
+ }
  */

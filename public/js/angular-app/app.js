@@ -6,12 +6,24 @@ var app = angular.module('app',
         [
             'ui.router'
         ])
-        .run(function ($rootScope, $state) {
+        .run(function ($rootScope, $state, $http) {
             $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-                
-                if (toState.authenticate && !$rootScope.session) {
-                    $state.transitionTo("login");
-                    event.preventDefault();
+
+                if (!$rootScope.session) {
+                    $http.get('/api/authenticate/success').
+                            then(function (object) {
+
+                                $rootScope.session = {};
+                                $rootScope.session.user = object.data.user;
+
+                            }).catch(function (object, status) {
+                        if (toState.authenticate) {
+                            $rootScope.session = undefined;
+                            $state.transitionTo("login");
+                            event.preventDefault();
+                        }
+
+                    });
                 }
 
             });
@@ -112,7 +124,7 @@ app.config(function ($stateProvider, $locationProvider) {
                 templateUrl: "/partials/postTemplate"
             }
         },
-        iconNavId : 'post-nav',
+        iconNavId: 'post-nav',
         authenticate: true
     }).state('view-post', {
         url: "/ad/:id",
@@ -126,7 +138,7 @@ app.config(function ($stateProvider, $locationProvider) {
                 controller: "viewAdTemplateCtrl"
             }
         },
-        iconNavId : "post-nav",
+        iconNavId: "post-nav",
         authenticate: false
     }).state('search', {
         url: "/search",
@@ -139,7 +151,7 @@ app.config(function ($stateProvider, $locationProvider) {
                 templateUrl: "/partials/searchTemplate"
             }
         },
-        iconNavId : "search-nav",
+        iconNavId: "search-nav",
         authenticate: false
     });
 

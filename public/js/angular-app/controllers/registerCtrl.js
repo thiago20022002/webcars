@@ -30,19 +30,7 @@ app.controller('registerCtrl', function ($scope, $http, $rootScope, $state) {
          }
          */
         
-        
-        
-        if(!$('#registerForm').validate()){
-            console.log("invalid");
-            return;
-        }else {
-            console.log("valid");
-          
-        };
-        
-
-        console.log($scope.registerFormName);
-
+   
         $http.post('/api/register', $scope.registerData).
                 then(function (object) {
                     console.log(object.data);

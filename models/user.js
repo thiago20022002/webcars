@@ -16,7 +16,7 @@ var adSchema = new mongoose.Schema({
     make: String,
     model: String,
     year: String,
-    views: String,
+    views: Number,
     seller: String,
     price: Number,
     description: String,
