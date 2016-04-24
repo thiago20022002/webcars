@@ -38,28 +38,60 @@ router.get('/api/userData/:username', function (req, res) {
 router.get('/api/getData', function (req, res) {
 
     Ads.find({}, function (err, ads) {
-        if (err)
+        if (err) {
             throw err;
+        }
         res.json(ads);
         return;
     });
     // res.status(400).send({error : "ADS find not working"});
 });
 
-router.get('/api/getCarData/:id', function (req, res) {
+router.get('/api/search/:queryType/:query', function (req, res) {
+    var queryString = req.params.query;
+    var query;
+    switch (req.params.queryType) {
+        case 'year':
+            query = {'year': {'$regex': queryString, '$options': 'i'}};
+            break;
+        case 'model':
+            query = {'model': {'$regex': queryString, '$options': 'i'}};
+            break;
+        case 'make':
+            query = {'make': {'$regex': queryString, '$options': 'i'}};
+            break;
+        case 'ALL':
+             query = {};
+             break;
+            
+    }
     
+    Ads.find(query, function (err, ads) {
+        if (err) {
+            throw err;
+        }
+        console.log(ads);
+        res.json(ads);
+        return;
+    });
+    // res.status(400).send({error : "ADS find not working"});
+});
+
+
+router.get('/api/getCarData/:id', function (req, res) {
+
     //Increment views
     Ads.update({"_id": req.params.id}, {$inc: {views: 1}}, function (err, res, ad) {
         if (err) {
-         //   console.log('not good');
+            //   console.log('not good');
         } else {
-         //   console.log('update succes ', ad);
+            //   console.log('update succes ', ad);
         }
     });
 
 
     Ads.findOne({'_id': req.params.id}, function (err, ad) {
-       
+
         //res.render('pages/ad', {user: req.user, adJson: JSON.stringify(ad)});
         res.send(ad);
 
@@ -126,18 +158,18 @@ router.post('/api/postAd', function (req, res) {
             {
                 username: req.user.username
             },
-            {
-                $push: {"postedAds": ad}
-            },
-            {
-                new : true
-            },
-            function (err, user) {
-                if (err) {
-                    res.header(401).send("ERROR");
-                }
-                res.json({'message': 'success'});
-            });
+    {
+        $push: {"postedAds": ad}
+    },
+    {
+        new : true
+    },
+    function (err, user) {
+        if (err) {
+            res.header(401).send("ERROR");
+        }
+        res.json({'message': 'success'});
+    });
 
 });
 
@@ -158,21 +190,21 @@ router.post('/api/:client/feedback', isLoggedIn, function (req, res) {
             {
                 username: req.params.client
             },
-            {
-                $push: {"feedbacks": fed}
-            },
-            {
-                new : true
-            },
-            function (err, user) {
-                if (err) {
-                    res.json({'message': 'failed'});
+    {
+        $push: {"feedbacks": fed}
+    },
+    {
+        new : true
+    },
+    function (err, user) {
+        if (err) {
+            res.json({'message': 'failed'});
 
-                    return;
-                }
-                res.json({'message': 'success'});
+            return;
+        }
+        res.json({'message': 'success'});
 
-            });
+    });
 });
 
 

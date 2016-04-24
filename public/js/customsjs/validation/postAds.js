@@ -33,9 +33,14 @@ $('#postAdForm').formValidation({
                 integer: {
                     message: 'The value is not a number'
                 },
+                greaterThan: {
+                    value: 1,
+                    message: 'The year must be postive'
+                },
                 notEmpty: {
                     message: 'provide year of the car'
                 }
+
             }
         },
         price: {
@@ -43,10 +48,14 @@ $('#postAdForm').formValidation({
                 integer: {
                     message: 'The value is not a number'
                 },
+                greaterThan: {
+                    value: 1,
+                    message: 'The price must be postive'
+                },
                 notEmpty: {
                     message: 'The price of the car'
                 }
-               
+
             }
         },
         url: {
@@ -55,7 +64,7 @@ $('#postAdForm').formValidation({
                     message: 'The url path of the car'
                 },
                 regexp: {
-                    regexp:  /\.(gif|jpg|jpeg|tiff|png)$/i,
+                    regexp: /\.(gif|jpg|jpeg|tiff|png)$/i,
                     message: 'it is not a valid image'
                 }
             }

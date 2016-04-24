@@ -20,7 +20,7 @@
                         Home
                     </a>
                 </li>
-                <li ng-if="false" ng-class="{active : isSelected('search-nav')}">
+                <li  ng-if="false" ng-class="{active : isSelected('search-nav')}">
                     <a ui-sref="search" >
               
                         <span class="fa fa-search fa-2x" style="display:block; text-align:center"></span>
@@ -58,7 +58,7 @@
                 </li>
 
                 <li ng-if="userExist == true" ng-controller='logoutCtrl'>
-                    <a href="#" ng-click="sendLogOutGet()">
+                    <a href="/" ng-click="sendLogOutGet()">
                         <span class="fa fa-sign-out fa-2x" style="display:block; text-align:center"></span> 
                         Logout
                     </a>

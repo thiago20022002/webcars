@@ -5,15 +5,15 @@
     <div class='col-md-1'>
     </div>
     <div class='col-md-10'>
-        <form class="form-inline" role="form">
+        <form class="form-inline" ng-submit="searchOption()" role="form" >
             <div class="form-group input-group input-group-md col-md-2">
 
-                <input type="text" class="form-control input-md " ng-model="loginData.username" placeholder="zip code"/>
+                <input type="text" id='searchZipCode' class="form-control input-md " ng-model="searchData.zipCode" placeholder="zip code"/>
                 <span class="input-group-addon" > <i class="fa fa-map-pin"></i></span>
             </div>
             <div class="form-group">
                 <label class="filter-col" style="margin-right:0;" for="pref-perpage">Mile radius</label>
-                <select class="form-control">
+                <select class="form-control" id="optionSelect">
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option selected="selected" value="50">50</option>
@@ -33,12 +33,13 @@
 
 
             <div class="form-group">
-                <input type="text" class="input-group-lg form-control" placeholder="Search">   
-                <a class="btn btn-default" href="#"><i class="fa fa-search"></i> search</a>
+                <input type="text" id="searchQuery" class="input-group-lg form-control" placeholder="Search">   
+                <button  class="btn btn-default" type="submit" ><i class="fa fa-search"></i> search</button>
             </div>
         </form>
     </div>
     <div class='col-md-1'>
     </div>
+
 </div>
 

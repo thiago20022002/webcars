@@ -7,54 +7,43 @@
                 <span class="model-tag">{{model}}</span>
                 <span class="pull-right">${{price}}</span>
             </legend>
-            <div id="ccarCarousel" class="carousel slide col-md-12" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carCarousel" data-slide-to="0" class="active"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img class="img-responsive center-block" src="{{urlImage}}">
+
+            <div class="item active">
+                <img class="img-responsive center-block" src="{{urlImage}}">
+            </div>
+
+            <ul class="col-md-12 list-group">
+                <li class="list-group-item col-md-12" >
+                    <div class="col-md-9">
+                        <a href="/profile/{{username}}">
+                            <div class="col-md-3 right-line">
+                                <img class="round_img" src="{{sellerImg}}" alt="...">
+                            </div> 
+                            <div class="col-md-9">
+                                <span class="user-name">{{username}}</span>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <a class="left carousel-control" href="#carCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-
+                    <div class="col-md-3">
+                        <h3>
+                            <span>Views:{{views}}</span>
+                        </h3>
+                    </div>
+                </li>
+            </ul>
             <div class="col-md-12">
-                <div class="col-md-10">
-                    <a  href="/profile/{{username}}">
-                        <h2>
-                            <span>
-                                {{username}}
-                            </span>
-                        </h2>
-                    </a>
-                </div>
-                <div class="col-md-2">
-                    <h3>
+                <ul class="list-inline">
+                    <li class="list-group-item"><h4>Year: {{year}}</h4></li>
+                    <li class="list-group-item"><h4>Make: {{make}}</h4></li>
+                    <li class="list-group-item"><h4>Model: {{model}}</h4></li>
+                    <li class="list-group-item"><h4>Location: {{location}}</h4></li>
+                </ul>
 
-                        <span>Views:{{views}}</span>
-                    </h3>
-
-                </div>
-                <div class="col-md-12">
-                    <ul class="list-inline">
-                        <li class="list-group-item"><h4>Year: {{year}}</h4></li>
-                        <li class="list-group-item"><h4>Make: {{make}}</h4></li>
-                        <li class="list-group-item"><h4>Model: {{model}}</h4></li>
-                    </ul>
-
-                </div>
-                <div class="col-md-12 description-box">
-                    {{description}}
-                </div>
             </div>
+            <div class="col-md-12 description-box">
+                {{description}}
+            </div>
+
         </fieldset>
     </div>
 

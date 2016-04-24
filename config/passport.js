@@ -50,7 +50,7 @@ module.exports = function (passport) {
                 console.log('Invalid Password');
                 return done(null, false,
                         req.flash('message', 'Invalid Password'));
-                  }
+            }
             // User and password both match, return user from 
             // done method which will be treated like success
             console.log("SUCCESSSSS");
@@ -69,7 +69,7 @@ module.exports = function (passport) {
             User.findOne({'username': username}, function (err, user) {
                 // In case of any error return
                 if (err) {
-                   // console.log('Error in SignUp: ' + err);
+                    // console.log('Error in SignUp: ' + err);
                     return done(err);
                 }
                 // already exists
@@ -85,14 +85,29 @@ module.exports = function (passport) {
                     // set the user's local credentials
                     newUser.username = username;
                     newUser.password = password;
-
+                    newUser.zipCode = req.body.zipCode;
+                    newUser.long = req.body.lng;
+                    newUser.latt = req.body.lat;
                     newUser.firstName = req.body.fname;
                     newUser.lastName = req.body.lname;
                     newUser.phone = req.body.phone;
                     newUser.address = req.body.address;
                     newUser.profilePictureUrl = req.body.profileURL;
-                    console.log(newUser);
+                    //console.log(newUser);
+                    //console.log("DATA ", req.body);
                     // save the user
+                    var format = getFormat(newUser.profilePictureUrl);
+
+                    if (format.indexOf("default") === -1) {
+                        newUser.profilePictureUrl = "images/profile/" + username + "." + format;
+                        var regexVar = "data:image/" + format + ";base64,";
+                        var regex = new RegExp(regexVar, 'g');
+                        var base64Data = req.body.profileURL.replace(regex, "");
+
+                        require("fs").writeFile("public/" + newUser.profilePictureUrl, base64Data, 'base64', function (err) {
+                            console.log(err);
+                        });
+                    }
                     newUser.save(function (err) {
                         if (err) {
                             console.log('Error in Saving user: ' + err);
@@ -110,8 +125,25 @@ module.exports = function (passport) {
         process.nextTick(findOrCreateUser);
     }));
 };
-var isValidPassword = function(user, password){
- return user.password === password;
+
+
+function getFormat(imageData) {
+    if (imageData.indexOf("jpeg;base64") > -1) {
+        return "jpeg";
+    } else if (imageData.indexOf("jpg;base64") > -1) {
+        return "jpg";
+    } else if (imageData.indexOf("png;base64") > -1) {
+        return "png";
+    }
+    else if (imageData.indexOf("bmp;base64") > -1) {
+        return "bmp";
+    } else {
+        return "default";
+    }
+}
+
+var isValidPassword = function (user, password) {
+    return user.password === password;
 
     // return bCrypt.compareSync(password, user.password);
 };

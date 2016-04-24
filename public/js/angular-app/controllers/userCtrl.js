@@ -62,8 +62,14 @@ app.controller('homeTemplateCtrl', function ($http, $state, $scope, $rootScope, 
 
 app.controller('postCtrl', function ($http, $scope, $state, $rootScope) {
 
-    $scope.sendAdPost = function () {
+    document.querySelector('#imageFile').onchange = function (e) {
+        console.log("SRC is " + $("#imageViewer").attr("src"));
+        loadFile();
 
+    };
+
+    $scope.sendAdPost = function () {
+        $scope.postData.imageUrl = $("#imageViewer").attr("src");
         $http.post('/api/postAd', $scope.postData).
                 then(function (data) {
                     console.log(data);
@@ -85,11 +91,11 @@ app.controller('logoutCtrl', function ($http, $scope, $state, $rootScope) {
         $http.get('/api/logout').
                 then(function (data) {
                     $rootScope.session = undefined;
-                    $state.go("index");
+                    $state.go("index", {}, {reload: true});
                 }).
                 catch (function (data, status) {
                     $rootScope.session = undefined;
-                    $state.go("index");
+                    $state.go("index", {}, {reload: true});
                 });
 
     };

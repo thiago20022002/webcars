@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global angular */
+
 function activateTabs() {
     $("#tabs-nav li").each(function () {
 
@@ -14,6 +16,8 @@ function activateTabs() {
         }
     });
 }
+
+
 
 
 
@@ -98,6 +102,17 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        zipCode: {
+            validators: {
+                notEmpty: {
+                    message: 'provide a zip code'
+                },
+                regexp: {
+                    regexp: /(^\d{5}$)|(^\d{5}-\d{4}$)/,
+                    message: 'zip code is invalid'
+                }
+            }
+        },
         url: {
             validators: {
                 notEmpty: {
@@ -145,20 +160,15 @@ $('#registerForm').formValidation({
             }
         }
         ).on('success.form.fv', function (e) {
-// Prevent form submission
-
+    // Prevent form submission
     e.preventDefault();
+
+    // Do custom handler
     var scope = angular.element(document.getElementById("registerScopeID")).scope();
     scope.$apply(function () {
         scope.sendRegisterPost();
     });
-    // Do custom handler
-    // such as sending data to server using Ajax ...
+
+
 });
 ;
-/*
- * zipCode: {
- country: 'US',
- message: 'The value is not valid UK postcode'
- }
- */

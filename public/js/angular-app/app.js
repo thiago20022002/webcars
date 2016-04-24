@@ -108,7 +108,8 @@ app.config(function ($stateProvider, $locationProvider) {
             },
             "mainView": {
                 templateUrl: "/partials/registerTemplate",
-                controller: "errorHandlerTemplateCtrl"
+                //controller: "errorHandlerTemplateCtrl"
+                controller: "registerCtrl"
             }
         },
         iconNavId: "register-nav",
@@ -148,6 +149,7 @@ app.config(function ($stateProvider, $locationProvider) {
                 templateUrl: "/partials/navBarTemplate"
             },
             "mainView": {
+                controller : "indexTemplateCtrl",
                 templateUrl: "/partials/searchTemplate"
             }
         },
