@@ -77,7 +77,7 @@ function findLocationZip(element, $http) {
     if (navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(function (pos) {
             //  console.log(pos);
-            $http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.coords.latitude + ',' + pos.coords.longitude + '&sensor=true').then(function (res) {
+            $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos.coords.latitude + ',' + pos.coords.longitude + '&sensor=true').then(function (res) {
                 // console.log(res.data);
                 var addr = res.data.results[0];
 
