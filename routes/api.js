@@ -179,12 +179,12 @@ router.post('/api/:client/feedback', isLoggedIn, function (req, res) {
     var fed = new Feedback();
     fed.username = req.user.username;
 
-    console.log(req.body.feedback);
+    //console.log(req.body.feedback);
 
     fed.url = req.user.profilePictureUrl;
     fed.comment = req.body.feedback;
 
-    console.log(fed);
+   // console.log(fed);
 
     Users.update(
             {

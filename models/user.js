@@ -62,8 +62,11 @@ adSchema.methods.store = function (req) {
     this.description = req.body.description;
 
     var pathID = Math.floor(Math.random() * 400000) + 1;
+
     var format = getFormat(req.body.imageUrl);
     if (format.indexOf("default") === -1) {
+        pathID = "images/carAds/" + pathID + "." + format;
+
         var regexVar = "data:image/" + format + ";base64,";
         var regex = new RegExp(regexVar, 'g');
         var base64Data = req.body.imageUrl.replace(regex, "");
@@ -74,7 +77,6 @@ adSchema.methods.store = function (req) {
     } else {
         this.picture.push(req.body.imageUrl);
     }
-
 };
 
 function getFormat(imageData) {

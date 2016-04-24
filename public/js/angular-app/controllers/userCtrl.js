@@ -63,8 +63,8 @@ app.controller('homeTemplateCtrl', function ($http, $state, $scope, $rootScope, 
 app.controller('postCtrl', function ($http, $scope, $state, $rootScope) {
 
     document.querySelector('#imageFile').onchange = function (e) {
-        console.log("SRC is " + $("#imageViewer").attr("src"));
-        loadFile();
+        //console.log("SRC is " + $("#imageViewer").attr("src"));
+        loadFile(($("#postAdForm")));
 
     };
 

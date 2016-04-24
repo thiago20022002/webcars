@@ -1,6 +1,6 @@
 .price-tag, .price{
 
-    font-size : 20px;
+    font-size : 50%;
    
 }
 .model-tag{
@@ -39,11 +39,12 @@
 }
 
 .ad-small-make{
-
-
+    font-size : 80%;
+         font-weight: bold;
 }
 
 .ad-small-model{
+
     color: brown;
-    font-size: 15px;
+     font-size : 60%;
 }

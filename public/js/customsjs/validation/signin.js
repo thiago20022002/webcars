@@ -1,5 +1,7 @@
 
 
+/* global angular */
+
 $('#signinForm').formValidation({
     framework: 'bootstrap',
     // Only disabled elements are excluded

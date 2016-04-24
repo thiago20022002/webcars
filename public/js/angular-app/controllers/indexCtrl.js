@@ -57,6 +57,7 @@ app.controller('indexTemplateCtrl', function ($scope, $http) {
                                 var d = calculateDistance(current.latt, lat, current.long, lng);
                                 //  console.log(d);
                                 if (d < radius) {
+                                    current.distance = parseInt(d);
                                     filtered.push(current);
                                 }
                             }

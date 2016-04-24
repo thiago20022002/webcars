@@ -41,10 +41,20 @@ function collectionPaser(collection) {
          * */
         searchContent += "</div>";
         searchContent += "<hr>";
-        
-        searchContent += "<p><span class='price pull-left'>" + collection[searchAds].address + "</span></p>";
-        searchContent += "<p><span class='price pull-right'>Views: " + collection[searchAds].views + "</span></p>";
-
+        searchContent += "<div class='col-md-12'>";
+        searchContent += "<span class='pull-left '>" + collection[searchAds].address + "</span>";
+        searchContent += "<span class='pull-right'>Views: " + collection[searchAds].views + "</span>";
+       
+        searchContent += "</div>";
+        if (collection[searchAds].distance !== undefined) {
+            searchContent += "<div class='col-md-12'>";
+            if (collection[searchAds].distance === 0) {
+                searchContent += "<p>In your area</p>";
+            } else {
+                searchContent += "<p>" + collection[searchAds].distance + " miles from your location</p>";
+            }
+            searchContent += "</div>";
+        }
         searchContent += "</fieldset>";
         /*
          * Closes "col-sm-6 col-md-4"

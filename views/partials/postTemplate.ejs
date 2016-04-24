@@ -1,5 +1,5 @@
-<div class="col-md-4"></div> 
-<div ng-controller="postCtrl" class="col-md-4" id="postAdScopeID">
+<div class="col-md-3"></div> 
+<div ng-controller="postCtrl" class="col-md-6" id="postAdScopeID">
     <form role="form" id="postAdForm">
         <fieldset>
             <!-- Form Name -->
@@ -10,7 +10,7 @@
                 <h4>Car Information</h4>  
             </div>
             <div class="form-group">
-                <input class="form-control input-sm" name="make" ng-model="postData.make" type="text" placeholder="car make" >
+                <input class="form-control input-sm" name="make" ng-model="postData.make" type="text" placeholder="car manufacturer" >
             </div>
             <!-- Text input-->
             <div class="form-group">
@@ -18,7 +18,7 @@
             </div>
             <!-- Text input-->
             <div class="form-group">
-                <input class="form-control input-sm" name="year" ng-model="postData.year" type="text" placeholder="car year  - MUST BE A NUMBER" >
+                <input class="form-control input-sm" name="year" ng-model="postData.year" type="text" placeholder="year of the car " >
             </div>
 
             <div class="form-group">
@@ -26,7 +26,7 @@
             </div>
             <!-- Text input-->
             <div class="form-group">
-                <input class="form-control input-sm"  name="price" ng-model="postData.price" type="text" placeholder="desired price in USD - MUST A BE NUMBER">
+                <input class="form-control input-sm"  name="price" ng-model="postData.price" type="text" placeholder="price in USD ">
             </div>
             <!-- Text input-->
             
@@ -40,7 +40,7 @@
                 <span class="fileUpload btn btn-default col-md-6">
                     <span><i class="fa fa-upload"></i> Upload</span>
 
-                    <input id="imageFile" type="file" class="upload" name="urlFile"/>
+                    <input id="imageFile" type="file" class="upload" />
                 </span>
             </div>
 
@@ -48,6 +48,7 @@
                 <center>
                     <img id="imageViewer" src="/images/carDefaultImage.jpg" height="50" alt="Image preview...">
                 </center>
+                <span name="urlFile"></span>
             </div>
             <!-- Textarea -->
             <div class="form-group">

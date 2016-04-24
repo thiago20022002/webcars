@@ -18,9 +18,6 @@ function activateTabs() {
 }
 
 
-
-
-
 $('#registerForm').formValidation({
     framework: 'bootstrap',
     // Only disabled elements are excluded
@@ -124,6 +121,22 @@ $('#registerForm').formValidation({
                 }
             }
 
+        },
+        urlFile: {
+            validators: {
+                callback: {
+                    message: 'Image can not exceed 4mb',
+                    callback: function (value, validator, $field) {
+                        var element = document.getElementById('imageFile');
+                       
+                        var img =element.files[0].size;
+                        
+                        var imgsize = img / 1024;
+                  
+                        return imgsize < 4096;
+                    }
+                }
+            }
         }
 
     }

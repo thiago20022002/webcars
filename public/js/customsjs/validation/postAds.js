@@ -3,6 +3,8 @@
 
 
 
+/* global angular */
+
 $('#postAdForm').formValidation({
     framework: 'bootstrap',
     // Only disabled elements are excluded
@@ -58,17 +60,21 @@ $('#postAdForm').formValidation({
 
             }
         },
-        url: {
+        urlFile: {
             validators: {
-                notEmpty: {
-                    message: 'The url path of the car'
-                },
-                regexp: {
-                    regexp: /\.(gif|jpg|jpeg|tiff|png)$/i,
-                    message: 'it is not a valid image'
+                callback: {
+                    message: 'Image can not exceed 4mb',
+                    callback: function (value, validator, $field) {
+                        var element = document.getElementById('imageFile');
+                       
+                        var img =element.files[0].size;
+                        
+                        var imgsize = img / 1024;
+                  
+                        return imgsize < 4096;
+                    }
                 }
             }
-
         },
         description: {
             validators: {

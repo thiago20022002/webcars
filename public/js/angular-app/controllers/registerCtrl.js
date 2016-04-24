@@ -21,8 +21,8 @@ app.controller('registerCtrl', function ($scope, $http, $rootScope, $state) {
     };
     
     document.querySelector('#imageFile').onchange = function (e) {
-        console.log("SRC is " +  $("#imageViewer").attr("src"));
-        loadFile();
+       // console.log("SRC is " +  $("#imageViewer").attr("src"));
+        loadFile($("#registerForm"));
          
     };
 
@@ -37,8 +37,8 @@ app.controller('registerCtrl', function ($scope, $http, $rootScope, $state) {
             if (status === google.maps.GeocoderStatus.OK) {
                 $scope.registerData.lat = results[0].geometry.location.lat();
                 $scope.registerData.lng = results[0].geometry.location.lng();
-                console.log(lat);
-                console.log(lng);
+               // console.log(lat);
+               // console.log(lng);
             } else {
                 console.log("Geocode was not successful for the following reason: " + status);
             }
@@ -63,7 +63,7 @@ app.controller('registerCtrl', function ($scope, $http, $rootScope, $state) {
                         $state.go($state.current, {});
                     });
         });
-    }
+    };
 
 });
 
