@@ -125,7 +125,7 @@ $('#registerForm').formValidation({
         urlFile: {
             validators: {
                 callback: {
-                    message: 'Image can not exceed 4mb',
+                    message: 'Image can not exceed 10mb',
                     callback: function (value, validator, $field) {
                         var element = document.getElementById('imageFile');
                        
@@ -133,7 +133,7 @@ $('#registerForm').formValidation({
                         
                         var imgsize = img / 1024;
                   
-                        return imgsize < 4096;
+                        return imgsize < 10196;
                     }
                 }
             }
