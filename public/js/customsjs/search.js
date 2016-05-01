@@ -1,4 +1,10 @@
-
+/**
+ * Created by Mulky on 2/23/16.
+ *
+ * --Deprecated
+ *
+ *
+ */
 
 function collectionPaser(collection) {
     // console.log("here ", collection);
