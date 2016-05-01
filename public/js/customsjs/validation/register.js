@@ -29,6 +29,11 @@ $('#registerForm').formValidation({
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
+        /**
+         * UserName:
+         *         notEmpty: Field cannot be empty
+         *         regexp: Regular expression to check for a valid format email(will not check it the email is vaild itself)
+         * */
         username: {
             validators: {
                 notEmpty: {
@@ -40,6 +45,11 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        /**
+         * Password:
+         *         notEmpty: Field cannot be empty
+         *         stringLength: Checks for the length to be atleast 8 characters long
+         * */
         password: {
             validators: {
                 notEmpty: {
@@ -51,6 +61,12 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        /**
+         * ConfirmPassword:
+         *         stringLength: Checks for the length to be atleast 8 characters long.
+         *         notEmpty: Field cannot be empty.
+         *         identical: Checks to see if the passwords match to confirm the password.
+         * */
         confirmPassword: {
             validators: {
                 stringLength: {
@@ -66,6 +82,10 @@ $('#registerForm').formValidation({
 
             }
         },
+        /**
+         * FirstName:
+         *         notEmpty: Field cannot be empty.
+         * */
         fname: {
             validators: {
                 notEmpty: {
@@ -73,6 +93,10 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        /**
+         * LastName:
+         *         notEmpty: Field cannot be empty.
+         * */
         lname: {
             validators: {
                 notEmpty: {
@@ -80,6 +104,11 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        /**
+         * PhoneNumber:
+         *         notEmpty: Field cannot be empty.
+         *         regexp: Checks to see if the field matches a phone number pattern.
+         * */
         phone: {
             validators: {
                 notEmpty: {
@@ -92,6 +121,10 @@ $('#registerForm').formValidation({
 
             }
         },
+        /**
+         * Address:
+         *         notEmpty: Field cannot be empty.
+         * */
         address: {
             validators: {
                 notEmpty: {
@@ -99,6 +132,11 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        /**
+         * ZipCode:
+         *         notEmpty: Field cannot be empty.
+         *         regexp: Checks if field is a valid zipcode pattern.
+         * */
         zipCode: {
             validators: {
                 notEmpty: {
@@ -110,6 +148,11 @@ $('#registerForm').formValidation({
                 }
             }
         },
+        /**
+         * URL Image:
+         *         notEmpty: Field cannot be empty.
+         *         regexp: Checks to see if the field matches a valid image extension pattern.
+         * */
         url: {
             validators: {
                 notEmpty: {
@@ -122,6 +165,11 @@ $('#registerForm').formValidation({
             }
 
         },
+        /**
+         * URL File:
+         *          Checks if the file provided by user is over 10mb.
+         *          Provides an error message if it exceeds that.
+         * */
         urlFile: {
             validators: {
                 callback: {

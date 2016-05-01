@@ -16,6 +16,10 @@ $('#postAdForm').formValidation({
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
+        /**
+         * Make of car:
+         *      notEmpty: Field cannot be empty
+         * */
         make: {
             validators: {
                 notEmpty: {
@@ -23,6 +27,10 @@ $('#postAdForm').formValidation({
                 }
             }
         },
+        /**
+         * Model of car:
+         *      notEmpty: Field cannot be empty
+         * */
         model: {
             validators: {
                 notEmpty: {
@@ -30,6 +38,12 @@ $('#postAdForm').formValidation({
                 }
             }
         },
+        /**
+         * Year of car:
+         *          integer: Field must be a number
+         *      greaterThan: Field must be greater than 1
+         *         notEmpty: Field cannot be empty
+         * */
         year: {
             validators: {
                 integer: {
@@ -45,6 +59,12 @@ $('#postAdForm').formValidation({
 
             }
         },
+        /**
+         * Price of car:
+         *          integer: Field must be a number
+         *      greaterThan: Field must be greater than 1 (Some testers put in negative numbers >.<)
+         *         notEmpty: Field cannot be empty
+         * */
         price: {
             validators: {
                 integer: {
@@ -60,6 +80,11 @@ $('#postAdForm').formValidation({
 
             }
         },
+        /**
+         * URL File:
+         *          Checks if the file provided by user is over 10mb.
+         *          Provides an error message if it exceeds that.
+         * */
         urlFile: {
             validators: {
                 callback: {
@@ -76,11 +101,15 @@ $('#postAdForm').formValidation({
                 }
             }
         },
+        /**
+         * Description of car:
+         *         notEmpty: Field cannot be empty
+         * */
         description: {
             validators: {
                 notEmpty: {
                     message: 'The car description'
-                },
+                }
             }
         }
 
@@ -132,5 +161,5 @@ $('#postAdForm').formValidation({
     // Do custom handler
     // such as sending data to server using Ajax ...
 });
-;
+
 

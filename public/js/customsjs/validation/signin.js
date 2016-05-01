@@ -13,6 +13,11 @@ $('#signinForm').formValidation({
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
+        /**
+         * UserName:
+         *         notEmpty: Field cannot be empty
+         *         regexp: Regular expression to check for a valid format email(will not check it the email is vaild itself)
+         * */
         username: {
             validators: {
                 notEmpty: {
@@ -24,6 +29,11 @@ $('#signinForm').formValidation({
                 }
             }
         },
+        /**
+         * Password:
+         *         notEmpty: Field cannot be empty
+         *         stringLength: Checks for the length to be atleast 8 characters long
+         * */
         password: {
             validators: {
                 notEmpty: {
